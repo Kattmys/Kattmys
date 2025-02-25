@@ -3,6 +3,8 @@ import json
 import pprint
 from flask import Flask, render_template
 
+# Hej!
+
 app = Flask(__name__)
 with open("data/content.json", encoding="utf-8") as f:
     data = json.load(f)
