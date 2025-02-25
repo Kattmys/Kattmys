@@ -1,49 +1,20 @@
-<!DOCTYPE html>
-<html lang="sv/SE">
+{% extends "base.html" %}
 
-<head>
-    <title>Kattmysnätverket</title>
+{% block title %} Våra projekt {% endblock %}
 
-    <style type="text/css">
-        @font-face {
-            font-family: 'Newsreader';
-            src: url("{{ url_for('static', filename='fonts/Newsreader/newsreader.ttf') }}");
-        }
-
-        @font-face {
-            font-family: 'Times New Roman';
-            src: url("{{ url_for('static', filename='fonts/Times New Roman/times new roman.ttf') }}");
-        }
-    </style>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
-<body>
-    <header class="titlebar">
-	<a href="http://kattmys.se/"><img src="../static/images/kattmys.png" id="kattmysbild"></a>
-        <img src="../static/images/finurligkatt.png" id="finurligkatt">
-    </header>
-
-    <main>
-
+{% block content %}
+<main>
     {% for info in data %}
-        <section class="content-item">
-            <h2>★     {{ info.header }}      ★</h2>
-                <p>{{ info.description }}</p>
-                <ul>
-                    {% for link in info.links %}
-                        <li><a href="{{ link[1] }}">{{ link[0] }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
+    <section class="content-item">
+        <h2><div class="star">★</div> {{ info.header }} <div class="star">★</div></h2>
+            <p>{{ info.description }}</p>
+            <ul>
+                {% for link in info.links %}
+                    <li><a href="{{ link[1] }}">{{ link[0] }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
     {% endfor %}
-
-    </main>
-
-    <!--<footer>-->
-    <!--    <p>Nåt roligt</p>-->
-    <!--</footer>-->
-</body>
-</html>
+</main>
+{% endblock %}

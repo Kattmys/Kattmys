@@ -31,6 +31,14 @@ h2 {
     border-bottom: rgb(189, 168, 110) 4px solid;
 }
 
+h2 .star {
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    bottom: 1px;
+    margin: 0 7px;
+}
+
 p, a {
     font-size: 19px;
 }
@@ -77,12 +85,15 @@ main {
 
 .content-item p {
     margin-bottom: 7px;
+    white-space: pre-wrap;
 }
 
 .content-item {
     margin: 10px;
     padding: 30px;
     padding-top: 7px;
+
+    max-width: 40vw;
 
     background-color: rgb(245, 220, 189);
 }
@@ -100,6 +111,7 @@ ul {
         padding: 15px;
         padding-top: 7px;
         width: 100%;
+        max-width: initial;
     }
 
     #kattmysbild {

@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="sv/SE">
+{% extends "base.html" %}
 
-<head>
-    <title>Kattmysnätverket</title>
+{% block head_ext %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/download_page.css') }}">
+{% endblock %}
 
-    <style type="text/css">
-        @font-face {
-            font-family: 'Newsreader';
-            src: url("{{ url_for('static', filename='fonts/Newsreader/newsreader.ttf') }}");
-        }
-
-        @font-face {
-            font-family: 'Times New Roman';
-            src: url("{{ url_for('static', filename='fonts/Times New Roman/times new roman.ttf') }}");
-        }
-    </style>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-</head>
+{% block content %}
+<main>
+    <h1>{% block download_name %}{% endblock %}</h1>
+    <a href="{% block url %}{% endblock %}">Ladda ner här</a>
+</main>
+{% endblock %}

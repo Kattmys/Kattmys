@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sv/SE">
+
+<head>
+    <style type="text/css">
+        @font-face {
+            font-family: 'Newsreader';
+            src: url("{{ url_for('static', filename='fonts/Newsreader/newsreader.ttf') }}");
+        }
+        @font-face {
+            font-family: 'Times New Roman';
+            src: url("{{ url_for('static', filename='fonts/Times New Roman/times new roman.ttf') }}");
+        }
+    </style>
+
+    <title>Kattmysnätverket - {% block title %}{% endblock %}</title>
+
+    {% block head_ext %}{% endblock %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+<body>
+    <header class="titlebar">
+	<a href="http://kattigt.kattmys.se/"><img src="../static/images/kattmys.png" id="kattmysbild"></a>
+        <img src="../static/images/finurligkatt.png" id="finurligkatt">
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <!--<footer>-->
+    <!--    <p>Nåt roligt</p>-->
+    <!--</footer>-->
+</body>
+</html>
