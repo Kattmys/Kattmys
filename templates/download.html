@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="sv/SE">
+
+<head>
+    <title>Kattmysnätverket</title>
+
+    <style type="text/css">
+        @font-face {
+            font-family: 'Newsreader';
+            src: url("{{ url_for('static', filename='fonts/Newsreader/newsreader.ttf') }}");
+        }
+
+        @font-face {
+            font-family: 'Times New Roman';
+            src: url("{{ url_for('static', filename='fonts/Times New Roman/times new roman.ttf') }}");
+        }
+    </style>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
