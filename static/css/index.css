@@ -1,26 +1,11 @@
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box; 
-}
+main {
+    grid-area: content;
 
-body {
-    z-index: 1;
-    /*width: 100%;*/
-    height: 100vh;
+    z-index: 2;
+    display: flex;
 
-    background-color: rgb(245, 220, 189);
-
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto 1fr;
-
-    grid-template-areas: "titlebar"
-                         "content";
-}
-
-* {
-    font-family: 'Newsreader';
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 h2 {
@@ -38,50 +23,6 @@ h2 .star {
     bottom: 1px;
     margin: 0 7px;
 }
-
-p, a {
-    font-size: 19px;
-}
-
-.titlebar {
-    padding: 10px;
-    padding-top: 0px;
-    padding-right: 0px;
-    grid-area: titlebar;
-
-    background-color: rgb(245, 220, 189);
-
-    border-bottom: rgb(189, 168, 110) 4px solid;
-}
-
-#kattmysbild {
-    margin-top: 10px;
-    height: 120px;
-}
-
-#finurligkatt {
-    z-index: 10;
-    
-    margin-top: 20px;
-    height: 110px;
-    float: right;
-}
-
-main {
-    grid-area: content;
-
-    z-index: 2;
-    display: flex;
-
-    flex-wrap: wrap;
-    align-content: flex-start;
-
-    /*width: 100%;*/
-
-    padding: 15px;
-    background-color: antiquewhite;
-}
-
 
 .content-item p {
     margin-bottom: 7px;
@@ -103,18 +44,10 @@ ul {
 }
 
 @media only screen and (max-width: 900px) {
-    #finurligkatt {
-        display: none;
-    }
-
     .content-item {
         padding: 15px;
         padding-top: 7px;
         width: 100%;
         max-width: initial;
-    }
-
-    #kattmysbild {
-        height: min(120px, 20vw);
     }
 }

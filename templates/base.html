@@ -15,11 +15,10 @@
 
     <title>Kattmysnätverket - {% block title %}{% endblock %}</title>
 
-    {% block head_ext %}{% endblock %}
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
+    {% block head_ext %}{% endblock %}
 </head>
 <body>
     <header class="titlebar">
