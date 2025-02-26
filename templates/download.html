@@ -6,7 +6,7 @@
 
 {% block content %}
 <main>
-    <h1>{% block download_name %}{% endblock %}</h1>
-    <a href="{% block url %}{% endblock %}">Ladda ner här</a>
+    <h1>{{ file.name }}</h1>
+    <a href="{{ url_for( file.url) }}">Ladda ner här</a>
 </main>
 {% endblock %}
