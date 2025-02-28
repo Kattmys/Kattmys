@@ -7,14 +7,10 @@
 {% block content %}
 <main>
     <section>
-        <div id="leftcolumn">
-            <h1>{{ data.name }}</h1>
-            <p>{{ data.desc }}</p>
-        </div>
-        <div id="download">
-            <a href="{{ url_for('static', filename=data.file) }}">Ladda ner här</a>
-        </div>
-        <img src="{{ url_for('static', filename=data.image) }}">
+        <h2>{{ data.name }}</h1>
+        <p>{{ data.desc }}</p>
+        <img id="download-img" src="{{ url_for('static', filename=data.image) }}">
+        <div id="download"><a href="{{ url_for('static', filename=data.file) }}">Ladda ner här</a></div>
     </section>
 </main>
 {% endblock %}
