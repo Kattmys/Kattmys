@@ -22,13 +22,13 @@ p {
     height: 40px;
     width: 100%;
 
-    box-shadow: 4px 4px red;
-
     margin-bottom: 10px;
+
     background-color: maroon;
+    box-shadow: 4px 4px red;
 }
 
-#download:active {
+#download:hover {
     background-color: red;
     box-shadow: 4px 4px maroon;
 }
