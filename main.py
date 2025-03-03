@@ -24,12 +24,18 @@ def home():
 # Nedladdningar
 @app.route("/download/<file>")
 def download(file):
-    try: 
+    try:
         download_data = downloads[file]
         return render_template("/download.html", data=download_data)
 
     except KeyError:
-        return f"<h1>404 Invalid address '{file}'</h1>"
+        return render_template(
+                "/download.html",
+                data={
+                    "name": f"404 Invalid address '{file}'",
+                    "error": True
+                    }
+                )
 
 
 # Katter
