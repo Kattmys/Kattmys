@@ -22,11 +22,15 @@ def home():
     return render_template(r"index.html", data=data)
 
 # Nedladdningar
+@app.route("/download/<file>")
+def download(file):
+    try: 
+        download_data = downloads[file]
+        return render_template("/download.html", data=download_data)
 
-for url in downloads:
-    app.route(f"/download/{url}.html")(
-        lambda: render_template(f"/download/{url}.html", data=downloads[url])
-    )
+    except KeyError:
+        return f"<h1>404 Invalid address '{file}'</h1>"
+
 
 # Katter
 

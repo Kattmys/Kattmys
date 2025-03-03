@@ -33,6 +33,11 @@ p {
     box-shadow: 4px 4px maroon;
 }
 
+#download:active {
+    background-color: maroon;
+    box-shadow: 4px 4px red;
+}
+
 #download-img {
     margin-bottom: 10px;
     box-shadow: 4px 4px red;
