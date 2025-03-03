@@ -10,7 +10,7 @@
         <h2>{{ data.name }}</h1>
         <p>{{ data.desc }}</p>
         <img id="download-img" src="{{ url_for('static', filename=data.image) }}">
-        <div id="download"><a href="{{ url_for('static', filename=data.file) }}">Ladda ner här</a></div>
+        <div id="download"><a href="{{ url_for('static', filename=data.file) }}">Ladda ner '{{data.name }}'</a></div>
     </section>
 </main>
 {% endblock %}

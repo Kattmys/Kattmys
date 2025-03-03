@@ -21,9 +21,9 @@
     {% block head_ext %}{% endblock %}
 </head>
 <body>
-    <header class="titlebar">
-	<a href="http://kattigt.kattmys.se/"><img src="../static/images/kattmys.png" id="kattmysbild"></a>
-        <img src="../static/images/finurligkatt.png" id="finurligkatt">
+    <header class="titlebar">   
+        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='/images/kattmys.png') }}" id="kattmysbild"></a>
+        <img src="{{ url_for('static', filename='/images/finurligkatt.png') }}" id="finurligkatt">
     </header>
 
     {% block content %}{% endblock %}
