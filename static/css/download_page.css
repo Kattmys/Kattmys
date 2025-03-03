@@ -25,6 +25,7 @@ p {
     text-decoration: underline;
 }
 
+
 #download {
     height: 40px;
     width: 100%;
@@ -49,4 +50,35 @@ p {
     margin-bottom: 10px;
     box-shadow: 4px 4px red;
     width: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+    main {
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    section {
+        display: grid;
+
+        height: auto;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 30px 1fr auto;
+        grid-template-areas: "ih2  images"
+                             "ip   images"
+                             "down images";
+    }
+
+    .download-img {
+        grid-area: images;
+        max-width: 90%;
+        width: 90%;
+        margin-left: auto;
+    }
+
+    h2        { grid-area: ih2; }
+    p         { grid-area: ip; }
+    #download { grid-area: down; }
 }

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ data.name }}{% endblock %}
+
 {% block head_ext %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/download_page.css') }}">
 {% endblock %}
@@ -12,9 +14,11 @@
         {% if not data.error %}
             <p>{{ data.desc }}</p>
 
-            {% if data.img %}
-                <img id="download-img" src="{{ url_for('static', filename=data.image) }}">
-                {% endif %}
+            <div id="download-images">
+            {% for img in data.images %}
+                <img class="download-img" src="{{ url_for('static', filename=img ) }}">
+                {% endfor %}
+            </div>
 
             <div id="download">
                 <a href="{{ url_for('static', filename=data.file) }}">Ladda ner '{{data.name }}'</a>

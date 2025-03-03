@@ -23,8 +23,8 @@
         "header": "Snake",
         "description": "Episka snake-spel skrivna i Rust med sdl2.",
         "links": [
-            ["Snake av Jack", "download/snake_jack.html"],
-            ["Snake av Francis", "download/snake_francis.html"]
+            ["Snake av Jack", "download/snake_jack"],
+            ["Snake av Francis", "download/snake_francis"]
         ]
     }
 ]

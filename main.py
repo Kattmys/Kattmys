@@ -30,12 +30,11 @@ def download(file):
 
     except KeyError:
         return render_template(
-                "/download.html",
-                data={
-                    "name": f"404 Invalid address '{file}'",
-                    "error": True
-                    }
-                )
+            "/download.html",
+            data={
+                "name": f"404 Invalid address '{file}'",
+                "error": True
+            })
 
 
 # Katter

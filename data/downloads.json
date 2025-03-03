@@ -2,7 +2,19 @@
     "snake_jack": {
         "name": "Snake av Jack",
         "desc": "Det här är Snake av Jack",
-        "image": "images/katter/sigge1.jpg",
-        "file": "images/katter/bonzo1.jpg"
+        "file": "images/katter/bonzo1.jpg",
+        "images": [
+            "images/katter/sigge1.jpg"
+        ]
+    },
+    "snake_francis": {
+        "name": "Snake av Francis",
+        "desc": "Detta är en version av spelet 'snake' som brutalt utklassar versionen vid namn 'Snake av Jack'",
+        "file": "images/katter/bonzo1.jpg",
+        "images": [
+            "images/katter/sigge1.jpg",
+            "images/katter/sigge1.jpg",
+            "images/katter/sigge1.jpg"
+        ]
     }
 }
