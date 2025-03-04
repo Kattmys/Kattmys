@@ -46,10 +46,9 @@ p {
     box-shadow: 4px 4px red;
 }
 
-#download-img {
+.download-img {
     margin-bottom: 10px;
     box-shadow: 4px 4px red;
-    width: 100%;
 }
 
 @media only screen and (max-width: 800px) {
@@ -64,12 +63,13 @@ p {
 
         height: auto;
         min-height: 400px;
+        box-shadow: 4px 4px rgb(189, 168, 110); 
 
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr min(fit-content, 40%);
         grid-template-rows: 30px 1fr auto;
         grid-template-areas: "ih2  images"
                              "ip   images"
-                             "down images";
+                             "down .";
     }
 
     #download-images {
@@ -79,9 +79,9 @@ p {
 
     .download-img {
         max-width: 90%;
-        width: 90%;
-        max-height: 1fr;
-        margin: auto;
+        height: 200px;
+        float: right;
+        margin: 10px;
     }
 
     h2        { grid-area: ih2; }
