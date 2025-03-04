@@ -37,6 +37,13 @@ h2 .star {
     max-width: 40vw;
 
     background-color: rgb(245, 220, 189);
+
+    box-shadow: 3px 3px rgb(189, 168, 110);
+    transition: 0.2s;
+}
+
+.content-item:hover {
+    box-shadow: 4px 4px red;
 }
 
 ul {

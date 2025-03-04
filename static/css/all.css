@@ -39,9 +39,17 @@ p, a {
     border-bottom: rgb(189, 168, 110) 4px solid;
 }
 
-#kattmysbild {
+#kattmysbild:hover {
+    /* cool skugga */
+    /*-webkit-filter: drop-shadow(2px 2px yellow);*/
+    /*filter: drop-shadow(2px 2px yellow);*/
+
     margin-top: 10px;
+}
+
+#kattmysbild {
     height: 120px;
+    transition: 0.3s;
 }
 
 #finurligkatt {

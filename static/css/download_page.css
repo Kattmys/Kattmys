@@ -63,6 +63,7 @@ p {
         display: grid;
 
         height: auto;
+        min-height: 400px;
 
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 30px 1fr auto;
@@ -71,11 +72,16 @@ p {
                              "down images";
     }
 
-    .download-img {
+    #download-images {
         grid-area: images;
+        height: 100%;
+    }
+
+    .download-img {
         max-width: 90%;
         width: 90%;
-        margin-left: auto;
+        max-height: 1fr;
+        margin: auto;
     }
 
     h2        { grid-area: ih2; }
