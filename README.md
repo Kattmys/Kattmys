@@ -1,3 +1,3 @@
 # Kattmysnätverket
 
-Sidan för kattmys.se.
+Sidan för kattigt.kattmys.se.
