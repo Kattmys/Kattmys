@@ -12,9 +12,6 @@ with open("data/content.json", encoding="utf-8") as f:
 with open("data/downloads.json", encoding="utf-8") as f:
     downloads = json.load(f)
 
-if __name__ == '__main__':
-   app.run()
-
 # Huvudsidan
 
 @app.route("/")
