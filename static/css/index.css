@@ -39,11 +39,11 @@ h2 .star {
     background-color: rgb(245, 220, 189);
 
     box-shadow: 3px 3px rgb(189, 168, 110);
-    transition: 0.1s;
+    transition: 0.05s;
 }
 
 .content-item:hover {
-    box-shadow: 4px 4px red;
+    box-shadow: 3.5px 3.5px red;
 }
 
 ul {

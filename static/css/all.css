@@ -40,9 +40,9 @@ p, a {
 }
 
 #kattmysbild:hover {
-    /* cool skugga */
-    /*-webkit-filter: drop-shadow(2px 2px yellow);*/
-    /*filter: drop-shadow(2px 2px yellow);*/
+    /* cool skugga som jack inte vill ha (rövhål) */
+    /* -webkit-filter: drop-shadow(2px 2px 2px #222); */
+    /* filter: drop-shadow(2px 2px 2px #222); */
 }
 
 #kattmysbild {
