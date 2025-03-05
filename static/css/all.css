@@ -43,11 +43,10 @@ p, a {
     /* cool skugga */
     /*-webkit-filter: drop-shadow(2px 2px yellow);*/
     /*filter: drop-shadow(2px 2px yellow);*/
-
-    /* margin-top: 10px; */
 }
 
 #kattmysbild {
+    margin-top: 10px;
     height: 120px;
     transition: 0.3s;
 }
