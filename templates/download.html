@@ -9,22 +9,37 @@
 {% block content %}
 <main>
     <section>
-        <h2>{{ data.name }}</h1>
+        <div class="left">
+            <h2 id="header">{{ data.name }}</h2>
 
-        {% if not data.error %}
-            <p>{{ data.desc }}</p>
+            {% if not data.error %}
+                <p id="desc">{{ data.desc }}</p>
 
-            <div id="download-images">
-            {% for img in data.images %}
-                <img class="download-img" src="{{ url_for('static', filename=img ) }}">
-                {% endfor %}
-            </div>
+                {% if data.links|length != 0 %}
+                    <div class="link_menu">
+                        {% for link in data.links %}
+                            <a href="{{ data.links[link] }}">{{ link }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
-            <div id="download">
-                <a href="{{ url_for('static', filename=data.file) }}">Ladda ner '{{data.name }}'</a>
-            </div>
+                <div id="download">
+                    <a href="{{ url_for('static', filename=data.file) }}">Ladda ner</a>
+                </div>
+
+                <p id="text">{{ data.text }}</p>
             {% endif %}
+        </div>
 
+        <div class="right">
+            {% if not data.error %}
+                <div id="download-images">
+                    {% for img in data.images %}
+                        <img class="download-img" src="{{ url_for('static', filename=img ) }}">
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </section>
 </main>
 {% endblock %}

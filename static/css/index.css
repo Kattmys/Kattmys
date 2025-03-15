@@ -13,7 +13,7 @@ h2 {
     font-size: 27px;
     padding-bottom: 3px;
     margin-bottom: 15px;
-    border-bottom: rgb(189, 168, 110) 4px solid;
+    border-bottom: rgb(189, 168, 110) var(--dec-width) solid;
 }
 
 h2 .star {
@@ -38,12 +38,12 @@ h2 .star {
 
     background-color: rgb(245, 220, 189);
 
-    box-shadow: 3px 3px rgb(189, 168, 110);
+    box-shadow: var(--dec-width) var(--dec-width) rgb(189, 168, 110);
     transition: 0.05s;
 }
 
 .content-item:hover {
-    box-shadow: 3.5px 3.5px red;
+    box-shadow: var(--dec-width) var(--dec-width) red;
 }
 
 ul {

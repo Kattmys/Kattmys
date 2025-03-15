@@ -3,6 +3,10 @@
     padding: 0px;
     box-sizing: border-box; 
     color: black;
+
+    /* Variabler */
+
+    --dec-width: 4px;
 }
 
 body {
@@ -36,7 +40,7 @@ p, a {
 
     background-color: rgb(245, 220, 189);
 
-    border-bottom: rgb(189, 168, 110) 4px solid;
+    border-bottom: rgb(189, 168, 110) var(--dec-width) solid;
 }
 
 #kattmysbild:hover {
@@ -57,6 +61,17 @@ p, a {
     margin-top: 20px;
     height: 110px;
     float: right;
+}
+
+.link_menu a {
+    /* Skulle kunna användas för förstasidan med. */
+
+    text-decoration: none;
+    color: blue;
+}
+
+.link_menu a:hover {
+    text-decoration: underline;
 }
 
 main {

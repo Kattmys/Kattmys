@@ -9,6 +9,18 @@ p {
     margin-bottom: 10px;
 }
 
+section {
+    text-align: center;
+}
+
+#header {
+    margin-bottom: 3px;
+}
+
+#text {
+    white-space: pre-wrap;
+}
+
 #download a {
     display: block;
 
@@ -25,30 +37,35 @@ p {
     text-decoration: underline;
 }
 
-
 #download {
     height: 40px;
-    width: 100%;
+    /* width: 100%; */
+    width: 200px;
 
-    margin-bottom: 10px;
+    margin: 0 auto;
+
+    /* adjust margin to the border */
+    margin-top: 20px;
+    margin-bottom: calc(20px + var(--dec-width));
 
     background-color: maroon;
-    box-shadow: 4px 4px red;
+    box-shadow: var(--dec-width) var(--dec-width) red;
 }
 
 #download:hover {
     background-color: red;
-    box-shadow: 4px 4px maroon;
+    box-shadow: var(--dec-width) var(--dec-width) maroon;
 }
 
 #download:active {
     background-color: maroon;
-    box-shadow: 4px 4px red;
+    box-shadow: var(--dec-width) var(--dec-width) red;
 }
 
 .download-img {
     margin-bottom: 10px;
-    box-shadow: 4px 4px red;
+    box-shadow: var(--dec-width) var(--dec-width) red;
+    width: 100%;
 }
 
 @media only screen and (max-width: 800px) {
@@ -61,33 +78,41 @@ p {
     section {
         display: grid;
 
+        text-align: left;
+
         height: auto;
-        min-height: 400px;
-        box-shadow: 4px 4px rgb(189, 168, 110); 
+        min-height: 100%;
+        box-shadow: var(--dec-width) var(--dec-width) rgb(189, 168, 110); 
 
         grid-template-columns: 1fr min-content;
-        grid-template-rows: 30px 1fr auto;
-        grid-template-areas: "ih2  images"
-                             "ip   images"
-                             "down images";
+        grid-template-rows: auto;
+        grid-template-areas: "left right";
+    }
+
+    .left  { grid-area: left;  }
+    .right { grid-area: right; }
+
+    #download {
+        margin-left:  initial;
+        margin-right: initial;
     }
 
     #download-images {
         width: fit-content;
-        grid-area: images;
-        height: 100%;
-        margin-left: 30px;
+        margin: initial;
+        /* grid-area: images; */
+        /* height: 100%; */
     }
 
     .download-img {
-        max-width: 90%;
-        width: 320px;
-        min-width: 320px;
+        /* max-width: 90%; */
+        /* width: 320px; */
+        min-width: 420px;
         float: right;
-        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
-    h2        { grid-area: ih2; }
-    p         { grid-area: ip; }
-    #download { grid-area: down; }
+    /* h2        { grid-area: ih2; } */
+    /* p         { grid-area: ip; } */
+    /* #download { grid-area: down; } */
 }
