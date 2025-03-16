@@ -17,7 +17,7 @@
                 <img src="{{ url_for('static', filename=path) }}">
             {% endfor %}
 
-            <ul>
+            <ul class="links">
                 {% for link in info.links %}
                     <li><a href="{{ link[1] }}">{{ link[0] }}</a></li>
                 {% endfor %}

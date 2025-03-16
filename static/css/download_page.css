@@ -9,10 +9,6 @@ p {
     margin-bottom: 10px;
 }
 
-section {
-    text-align: center;
-}
-
 #header {
     margin-bottom: 3px;
 }
@@ -72,6 +68,10 @@ section {
     main {
         position: relative;
     }
+
+    #desc, #header {
+        text-align: center;
+    }
 }
 
 @media only screen and (min-width: 800px) {
@@ -89,8 +89,12 @@ section {
         grid-template-areas: "left right";
     }
 
-    .left  { grid-area: left;  }
     .right { grid-area: right; }
+    .left  { grid-area: left;  }
+
+    .left {
+        padding-right: 20px;
+    }
 
     #download {
         margin-left:  initial;

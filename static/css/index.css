@@ -46,10 +46,6 @@ h2 .star {
     box-shadow: var(--dec-width) var(--dec-width) red;
 }
 
-ul {
-    padding-left: 20px;
-}
-
 section img {
     width: 100%;
 }

@@ -16,11 +16,11 @@
                 <p id="desc">{{ data.desc }}</p>
 
                 {% if data.links|length != 0 %}
-                    <div class="link_menu">
+                    <ul class="links">
                         {% for link in data.links %}
-                            <a href="{{ data.links[link] }}">{{ link }}</a>
+                            <li><a href="{{ data.links[link] }}">{{ link }}</a></li>
                         {% endfor %}
-                    </div>
+                    </ul>
                 {% endif %}
 
                 <div id="download">

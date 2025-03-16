@@ -32,6 +32,10 @@ p, a {
     font-size: 19px;
 }
 
+ul {
+    padding-left: 20px;
+}
+
 .titlebar {
     padding: 10px;
     padding-top: 0px;
@@ -63,14 +67,12 @@ p, a {
     float: right;
 }
 
-.link_menu a {
-    /* Skulle kunna användas för förstasidan med. */
-
+.links li a {
     text-decoration: none;
-    color: blue;
+    color: #0b0788;
 }
 
-.link_menu a:hover {
+.links li a:hover {
     text-decoration: underline;
 }
 
@@ -79,12 +81,22 @@ main {
     background-color: antiquewhite;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
     #finurligkatt {
         display: none;
     }
 
     #kattmysbild {
         height: min(120px, 20vw);
+    }
+
+    .content-item {
+        text-align: center;
+    }
+
+    .links {
+        text-align: center;
+        list-style-type: none;
+        padding-left: 0;
     }
 }
