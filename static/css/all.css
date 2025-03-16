@@ -41,6 +41,7 @@ ul {
 }
 
 .titlebar {
+    display: flex;
     padding: 10px;
     padding-top: 0px;
     padding-right: 0px;
@@ -51,6 +52,49 @@ ul {
     border-bottom: var(--accent-primary) var(--dec-width) solid;
 }
 
+.titlebar ul {
+    display: flex;
+    float: left;
+
+    justify-content: center;
+    margin: auto;
+    margin-right: 10px;
+
+    height: 40px;
+}
+
+.titlebar ul li {
+    display: inline-block;
+
+    background-color: maroon;
+    box-shadow: var(--dec-width) var(--dec-width) red;
+
+    padding: 0px 20px;
+    margin-right: 20px;
+
+    height: 50px;
+}
+
+.titlebar ul li:hover {
+    background-color: red;
+    box-shadow: var(--dec-width) var(--dec-width) maroon;
+}
+
+.titlebar ul li:active {
+    background-color: maroon;
+    box-shadow: var(--dec-width) var(--dec-width) red;
+}
+
+.nav-link {
+    line-height: 300%;
+    text-decoration: none;
+    color: white;
+}
+
+.burger-line, .burger {
+    display: none;
+}
+
 #kattmysbild:hover {
     /* cool skugga som jack inte vill ha (rövhål) */
     /* -webkit-filter: drop-shadow(2px 2px 2px #222); */
@@ -59,8 +103,9 @@ ul {
 
 #kattmysbild {
     margin-top: 10px;
-    height: 120px;
     transition: 0.3s;
+    height: 120px;
+    float: left;
 }
 
 #finurligkatt {
@@ -85,13 +130,40 @@ main {
     background-color: var(--bg0);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 835px) {
+    .titlebar ul,
     #finurligkatt {
         display: none;
     }
 
+    .burger {
+        display: block;
+
+        margin: auto;
+        margin-right: 30px;
+
+        padding-top: 5px;
+
+        background-color: maroon;
+        box-shadow: var(--dec-width) var(--dec-width) red;
+
+        height: 50px;
+        width: 50px;
+    }
+
+    .burger-line {
+        position: relative;
+        display: block;
+        height: 3px;
+        width: 40px;
+
+        margin: 7px auto;
+
+        background-color: white;
+    }
+
     #kattmysbild {
-        height: min(120px, 20vw);
+        height: min(120px, 18vw);
     }
 
     .content-item {

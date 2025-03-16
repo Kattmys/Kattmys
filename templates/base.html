@@ -21,10 +21,25 @@
     {% block head_ext %}{% endblock %}
 </head>
 <body>
-    <header class="titlebar">   
-        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='/images/kattmys.png') }}" id="kattmysbild"></a>
+    <nav class="titlebar">   
+        <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='/images/kattmys.png') }}" id="kattmysbild">
+        </a>
+
+        <a class="burger">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </a>
+            
+        <ul>
+            <li><a href="#" class="nav-link">Flöde</a></li>
+            <li><a href="#" class="nav-link">Index</a></li>
+            <li><a href="#" class="nav-link">sök</a></li>
+        </ul>
         <img src="{{ url_for('static', filename='/images/finurligkatt.png') }}" id="finurligkatt">
-    </header>
+
+    </nav>
 
     {% block content %}{% endblock %}
 
