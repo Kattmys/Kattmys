@@ -28,7 +28,7 @@ body {
     font-family: 'Newsreader';
 }
 
-p, a {
+p, a, li {
     font-size: 19px;
 }
 

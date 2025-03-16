@@ -1,0 +1,32 @@
+#content {
+    padding: 30px;
+    padding-top: 14px;
+    width: 800px;
+    margin: auto;
+    min-height: 100%;
+
+    background-color: rgb(245, 220, 189);
+    box-shadow: var(--dec-width) var(--dec-width) rgb(189, 168, 110);
+}
+
+h1 { font-size: 35px; }
+h2 { font-size: 25px; }
+h3 { font-size: 20px; }
+
+h1, h2, h3, p, a {
+    margin-bottom: 4px;
+}
+
+h2, h3 {
+    margin-top: 14px;
+}
+
+ul {
+    margin-top: 8px;
+}
+
+@media only screen and (max-width: 800px) {
+    #content {
+        width: 100%;
+    }
+}
