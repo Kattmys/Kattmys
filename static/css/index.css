@@ -13,7 +13,7 @@ h2 {
     font-size: 27px;
     padding-bottom: 3px;
     margin-bottom: 15px;
-    border-bottom: rgb(189, 168, 110) var(--dec-width) solid;
+    border-bottom: var(--accent-primary) var(--dec-width) solid;
 }
 
 h2 .star {
@@ -36,14 +36,14 @@ h2 .star {
 
     max-width: 40vw;
 
-    background-color: rgb(245, 220, 189);
+    background-color: var(--bg1);
 
-    box-shadow: var(--dec-width) var(--dec-width) rgb(189, 168, 110);
+    box-shadow: var(--dec-width) var(--dec-width) var(--accent-primary);
     transition: 0.05s;
 }
 
 .content-item:hover {
-    box-shadow: var(--dec-width) var(--dec-width) red;
+    box-shadow: var(--dec-width) var(--dec-width) var(--accent-secondary);
 }
 
 section img {
