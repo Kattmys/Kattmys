@@ -1,10 +1,9 @@
 import os
 import json
-
-from markdown import markdown # pip install markdown
-
 import flask
-# from flask import Flask, render_template
+
+from markdown import markdown
+
 Flask = flask.Flask
 render_template = flask.render_template
 
@@ -31,13 +30,6 @@ def page_download(file):
         return render_template("/download.html", data=download_data)
 
     except KeyError:
-        # return render_template(
-        #     "/download.html",
-        #     data={
-        #         "name": f"404 Invalid address '{file}'",
-        #         "error": True
-        #     })
-
         return flask.redirect('/404')
 
 # Småsidor

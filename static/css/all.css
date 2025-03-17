@@ -6,10 +6,12 @@
 
     /* Variabler */
 
-    --dec-width: 4px;
+    --dec-width:        4px;
 
-    --bg0: antiquewhite;
-    --bg1: rgb(245, 220, 189);
+    --bg0:              rgb(250, 235, 215);
+    --bg1:              rgb(245, 220, 189);
+    /* --bg2:              rgb(247, 227, 202); */
+    --bg2:              #ebd2b0;
 
     --accent-primary:   rgb(189, 168, 110);
     --accent-secondary: red;
@@ -66,8 +68,8 @@ ul {
 .titlebar ul li {
     display: inline-block;
 
-    background-color: maroon;
-    box-shadow: var(--dec-width) var(--dec-width) red;
+    background-color: var(--bg2);
+    box-shadow: var(--dec-width) var(--dec-width) var(--accent-primary);
 
     padding: 0px 20px;
     margin-right: 20px;
@@ -76,20 +78,23 @@ ul {
 }
 
 .titlebar ul li:hover {
-    background-color: red;
-    box-shadow: var(--dec-width) var(--dec-width) maroon;
+    box-shadow: calc(var(--dec-width) * 4/3) calc(var(--dec-width) * 4/3) var(--accent-secondary);
 }
 
 .titlebar ul li:active {
-    background-color: maroon;
-    box-shadow: var(--dec-width) var(--dec-width) red;
+    background-color: var(--accent-primary);
+    box-shadow: calc(var(--dec-width) * 2/3) calc(var(--dec-width) * 2/3) var(--accent-secondary);
 }
 
 .nav-link {
     line-height: 300%;
     text-decoration: none;
-    color: white;
+    color: black;
 }
+
+/* .titlebar ul li:hover .nav-link { */
+/*     color: var(--bg0); */
+/* } */
 
 .burger-line, .burger {
     display: none;
@@ -145,7 +150,7 @@ main {
         padding-top: 5px;
 
         background-color: maroon;
-        box-shadow: var(--dec-width) var(--dec-width) red;
+        box-shadow: var(--dec-width) var(--dec-width) var(--accent-secondary);
 
         height: 50px;
         width: 50px;
