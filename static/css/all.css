@@ -60,7 +60,7 @@ ul {
 
     justify-content: center;
     margin: auto;
-    margin-right: 10px;
+    margin-right: 40px;
 
     height: 40px;
 }
@@ -78,12 +78,15 @@ ul {
 }
 
 .titlebar ul li:hover {
-    box-shadow: calc(var(--dec-width) * 4/3) calc(var(--dec-width) * 4/3) var(--accent-secondary);
+    box-shadow: calc(var(--dec-width)) calc(var(--dec-width)) var(--accent-secondary);
 }
 
 .titlebar ul li:active {
-    background-color: var(--accent-primary);
-    box-shadow: calc(var(--dec-width) * 2/3) calc(var(--dec-width) * 2/3) var(--accent-secondary);
+    /* background-color: var(--accent-primary); */
+    /* box-shadow: calc(var(--dec-width) * 2/3) calc(var(--dec-width) * 2/3) var(--accent-secondary); */
+
+    background-color: var(--bg2);
+    box-shadow: var(--dec-width) var(--dec-width) var(--accent-primary);
 }
 
 .nav-link {

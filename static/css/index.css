@@ -1,11 +1,12 @@
 main {
     grid-area: content;
-
     z-index: 2;
-    display: flex;
 
+    padding: 20px 40px;
+
+    display: flex;
     flex-wrap: wrap;
-    align-content: flex-start;
+    justify-content: center;
 }
 
 h2 {
@@ -33,6 +34,8 @@ h2 .star {
     margin: 10px;
     padding: 30px;
     padding-top: 7px;
+
+    width: 100%;
 
     max-width: 40vw;
 

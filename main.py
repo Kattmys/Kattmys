@@ -21,6 +21,12 @@ with open("data/downloads.json", encoding="utf-8") as f:
 def home():
     return render_template(r"index.html", data=data)
 
+# 404
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template(r"404.html"), 404
+
 # Nedladdningar
 
 @app.route("/download/<file>")
@@ -39,7 +45,7 @@ def page_page(name):
     try:
         with open(f"static/pages/{name}.md") as file:
             html = markdown(file.read())
-            print(html)
+            # NOTE: pissful .replace användning
             return render_template("/page.html").replace("REPLACE_THIS", html)
 
     except FileNotFoundError:
