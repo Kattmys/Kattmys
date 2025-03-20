@@ -9,20 +9,33 @@
     box-shadow: var(--dec-width) var(--dec-width) rgb(189, 168, 110);
 }
 
-h1 { font-size: 35px; }
-h2 { font-size: 25px; }
-h3 { font-size: 20px; }
+/* ett budget försök på nån sorts bootstrap-automatisk-förfining av taggar */
 
-h1, h2, h3, p, a {
-    margin-bottom: 4px;
+main h1 { font-size: 35px; }
+main h2 { font-size: 25px; }
+main h3 { font-size: 20px; }
+
+main h2, main h3, main p, main a {
+    margin-bottom: 3px;
 }
 
-h2, h3 {
-    margin-top: 14px;
-}
-
-ul {
+main h2, main h3 {
     margin-top: 8px;
+}
+
+main ul {
+    margin-top: 8px;
+}
+
+main h1 {
+    /* kopierat från index.css -
+     * en påminnelse om att fixa all repetitiv css,
+     * eftersom det suger. */
+
+    text-align: center;
+    padding-bottom: 3px;
+    margin-bottom: 15px;
+    border-bottom: var(--accent-primary) var(--dec-width) solid;
 }
 
 @media only screen and (max-width: 800px) {
