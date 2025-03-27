@@ -137,6 +137,11 @@ main {
     padding: 15px;
     background-color: var(--bg0);
 }
+@media only screen and (max-width: 900px) {
+    #finurligkatt {
+        display: none;
+    }
+}
 
 @media only screen and (max-width: 835px) {
     .titlebar ul,
