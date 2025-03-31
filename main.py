@@ -1,6 +1,7 @@
 import os
 import json
 import flask
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from markdown import markdown
 
@@ -8,6 +9,11 @@ Flask = flask.Flask
 render_template = flask.render_template
 
 app = Flask(__name__)
+
+# App is behind one proxy that sets the -For and -Host headers.
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1
+)
 
 with open("data/content.json", encoding="utf-8") as f:
     data = json.load(f)
@@ -64,4 +70,4 @@ def page_katt_bonzo():
 # Start
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=50000)
+    app.run(host="127.0.0.1", port=5000)
