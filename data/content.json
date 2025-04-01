@@ -7,6 +7,14 @@
         ],
         "images": ["images/amigos.jpg"]
     },
+	
+	{
+        "header": "Kattmysnätverket stänger ned.",
+        "description": "Det har varit en lång och underbar resa att få driva detta nätverk tillsammans med er. Men för två månader sen nu så gick vi enskilda vägar. Vi har inte umgåtts och knappt hört nåt från varandra på ett tag. Därför bestämmde vi oss för att ha ett möte igen som vi haft varje månad tidigare, vi kallar dom \"datakattmöte\". På detta möte så har vi diskuterat vad vi ska göra med Kattmysnätverket. Vi har inte nån av oss gnistan kvar efter att vi gått separata vägar. Vi har därför beslutit att lägga ner sajten. Vi tycker att det är tråkigt att det skulle bli såhär men det har varit en fantastisk resa att få driva detta nätverk, även om det aldrig blev så stort.",
+        "links": []
+        "images": []
+    },
+	
     {
         "header": "Katter",
         "description": "Två väldigt fina katter nedan; de har egna sidor att skåda! klicka!",
