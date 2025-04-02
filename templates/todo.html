@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Kattmysgängets att-göran!{% endblock %}
+
+
+{% block head_ext %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/todo.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <h1 id="">Mycket att göra innan lördag</h1>
+
+    <div id="items">
+        {% for list in data %}
+        <a class="link" href="{{ url_for('todoList', list_id=list.id) }}">
+            <section class="item">
+                <h2>{{ list.name }}</h2>
+                <p class="last_edited"> Last edited: {{ list.last_edited }} </p>
+                <p class="creation_date"> Created: {{ list.created }} </p>
+            </section>
+        </a>
+
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
