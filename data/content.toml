@@ -1,29 +1,41 @@
 [[posts]]
 header = "Kattmysnätverket"
 description = """
-Kattmysnätverket är namnet på det nätverk där du finner lyckan. Kultur, gemenskap och katter sluts samman till en väv där kärleken sprudlar och livet tycks dricka lemonad.
+Kattmysnätverket är namnet på det nätverk där du finner lyckan.
+Kultur, gemenskap och katter sluts samman till en väv där
+kärleken sprudlar och livet tycks dricka lemonad.
 
-Kattmysnätverket är namnet på det nätverk som stadigt växer, ständigt trotsar giganterna. Följ med oss på resan redan nu - ty vi skall ta över världen.
+Kattmysnätverket är namnet på det nätverk som stadigt växer,
+ständigt trotsar giganterna. Följ med oss på resan redan nu - ty
+vi skall ta över världen.
 """
+images = ["images/amigos.jpg"]
 links = [
     ["Mer om oss!", "/page/om"]
 ]
-images = []#"images/amigos.jpg"]
+
+
 
 [[posts]]
 header = "Katter"
-description = "Två väldigt fina katter nedan; de har egna sidor att skåda! klicka!"
+description = """
+Två väldigt fina katter nedan; de har egna sidor att skåda! klicka!
+"""
+images = []
 links = [
     ["Bonzo", "/bonzo"],
     ["Sigge", "/sigge"]
 ]
-images = []
+
+
 
 [[posts]]
 header = "Snake"
-description = "Episka snake-spel skrivna i Rust med sdl2."
+description = """
+Episka snake-spel skrivna i Rust med sdl2.
+"""
+images = []
 links = [
     ["Snake av Jack", "download/snake_jack"],
     ["Snake av Francis", "download/snake_francis"]
 ]
-images = []
