@@ -61,13 +61,18 @@ def page_page(name):
 
 @app.route("/sigge")
 def page_katt_sigge():
-    return render_template(r"katter/sigge.html")
+    return render_template(r"sigge.html")
 
 @app.route("/bonzo")
 def page_katt_bonzo():
-    return render_template(r"katter/bonzo.html")
+    return render_template(r"bonzo.html")
+
+@app.route("/login")
+def page_login():
+    return render_template(r"login.html")
+
 
 # Start
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000)
+    app.run(host="127.0.0.1", port=5000, debug=True)
