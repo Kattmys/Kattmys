@@ -1,5 +1,6 @@
 import os
 import json
+import toml
 import flask
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -15,8 +16,8 @@ app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1
 )
 
-with open("data/content.json", encoding="utf-8") as f:
-    data = json.load(f)
+with open("data/content.toml", encoding="utf-8") as f:
+    data = toml.load(f)["posts"]
 
 with open("data/downloads.json", encoding="utf-8") as f:
     downloads = json.load(f)
