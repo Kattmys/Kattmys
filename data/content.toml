@@ -10,6 +10,7 @@ links = [
     # ["Mer om oss!", "/page/om"]
 ]
 
+
 [[posts]]
 header = "Katter"
 description = """
@@ -20,6 +21,22 @@ links = [
     ["Bonzo", "/bonzo"],
     ["Sigge", "/sigge"]
 ]
+
+
+[[posts]]
+header = "Inloggning på inrull!"
+description = """
+Vi introducerar en ny inloggningssida där du kan skapa ett konto
+och logga in. 
+
+Välkommen att registrera dig!
+"""
+images = []
+links = [
+    ["Logga in", "/login"],
+    ["Skapa ett konto", "/signup"]
+]
+
 
 [[posts]]
 header = "Snake"

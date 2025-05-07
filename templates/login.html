@@ -3,27 +3,42 @@
 {% block title %} Logga in kattmys {% endblock %}
 
 {% block head_ext %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+   <link rel="stylesheet" href="{{ url_for("static", filename="css/login.css") }}">
 {% endblock %}
 
 {% block content %}
+"
 <main>
-    <h2>Logga in</h2>
-    <form>
-        <label for="uname">Username</label>
-        <input type="text" placeholder="Enter Username" id="uname" name="uname" required>
+    {% if sign_up %}
+    <form method="POST" action="/handle_sign_up">
+        <h2>Skapa ett konto!</h2>
+    {% else %}
+    <form method="POST" action="/handle_log_in">
+        <h2>Logga in!</h2>
+    {% endif %}
+    
+        <label class="label" for="uname">Username</label>
+        <input class="field" type="text" placeholder="Enter Username" id="uname" name="uname" required>
 
-        <label for="psw">Password</label>
-        <input type="password" placeholder="Enter password" id="psw" name="psw" required>
+        <label class="label" for="psw">Password</label>
+        <input class="field" type="password" placeholder="Enter password" id="psw" name="psw" required>
 
-        <label for="psw2">Re-enter Password</label>
-        <input type="password" placeholder="Re-Enter password" id="psw2" name="psw2" required>
+        {% if sign_up %}
+            <label class="label" for="psw2">Re-enter Password</label>
+            <input class="field" type="password" placeholder="Re-Enter password" id="psw2" name="psw2" required>
+        {% endif %}
 
-        <button type="submit">Login</button>
-
-        <label>
+        <label class="label">
             <input type="checkbox" checked="checked" name="Remember me"> Remember me
         </label>
+
+        <button class="field" type="submit">
+            {% if sign_up %}
+            Sign in
+            {% else %}
+            Log in
+            {% endif %}
+        </button>
     </form>
 </main>
 {% endblock %}

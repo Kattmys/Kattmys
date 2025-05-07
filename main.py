@@ -1,6 +1,7 @@
 import os
 import toml
 import flask
+
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from markdown import markdown
@@ -67,9 +68,23 @@ def page_katt_sigge():
 def page_katt_bonzo():
     return render_template(r"bonzo.html")
 
+
+# login
 @app.route("/login")
 def page_login():
-    return render_template(r"login.html")
+    return render_template(r"login.html", sign_up=False)
+
+@app.route("/signup")
+def page_sign_up():
+    return render_template(r"login.html", sign_up=True)
+
+@app.route("/handle_sign_up", methods=["POST"])
+def handle_sign_up():
+    ...
+
+@app.route("/handle_log_in", methods=["POST"])
+def handle_log_in():
+    ...
 
 
 # Start

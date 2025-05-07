@@ -2,9 +2,8 @@
 
 {% block title %}Kattmysgängets att-göran!{% endblock %}
 
-
 {% block head_ext %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/todo.css') }}">
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/todo.css") }}">
 {% endblock %}
 
 {% block content %}
@@ -13,7 +12,7 @@
 
     <div id="items">
         {% for list in data %}
-        <a class="link" href="{{ url_for('todoList', list_id=list.id) }}">
+        <a class="link" href="{{ url_for("todoList", list_id=list.id) }}">
             <section class="item">
                 <h2>{{ list.name }}</h2>
                 <p class="last_edited"> Last edited: {{ list.last_edited }} </p>
