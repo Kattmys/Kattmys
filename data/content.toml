@@ -5,7 +5,7 @@ Kattmysnätverket är namnet på det nätverk där du finner lyckan. Kultur, gem
 
 Kattmysnätverket är namnet på det nätverk som stadigt växer, ständigt trotsar giganterna. Följ med oss på resan redan nu - ty vi skall ta över världen.
 """
-images = ["images/amigos.jpg"]
+images = []
 links = [
     ["Mer om oss!", "/page/om"]
 ]
