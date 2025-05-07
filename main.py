@@ -1,8 +1,9 @@
 import os
 import toml
 import flask
-from kattbas.database.home import Home
+# from kattbas.database.home import Home
 from kattbas.database.users import Users
+from kattbas.database.database import Database
 
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -18,19 +19,19 @@ app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1
 )
 
-conn = psycopg.connect(
-    dbname=dbname,
-    user=user,
-    host=host,
-    port=port,
-    row_factory=psycopg.rows.dict_row
-)
-
-conn.autocommit = True
-cur = self.conn.cursor()
+# conn = psycopg.connect(
+#     dbname=dbname,
+#     user=user,
+#     host=host,
+#     port=port,
+#     row_factory=psycopg.rows.dict_row
+# )
+#
+# conn.autocommit = True
+# cur = self.conn.cursor()
 
 users = Users(cur)
-home = Home(cur)
+# home = Home(cur)
 
 with open("data/content.toml", encoding="utf-8") as f:
     data = toml.load(f)["posts"]
