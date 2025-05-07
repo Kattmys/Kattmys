@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Logga in kattmys {% endblock %}
+
+{% block head_ext %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <h2>Logga in</h2>
+    <form>
+        <label for="uname">Username</label>
+        <input type="text" placeholder="Enter Username" id="uname" name="uname" required>
+
+        <label for="psw">Password</label>
+        <input type="password" placeholder="Enter password" id="psw" name="psw" required>
+
+        <label for="psw2">Re-enter Password</label>
+        <input type="password" placeholder="Re-Enter password" id="psw2" name="psw2" required>
+
+        <button type="submit">Login</button>
+
+        <label>
+            <input type="checkbox" checked="checked" name="Remember me"> Remember me
+        </label>
+    </form>
+</main>
+{% endblock %}
+
