@@ -14,8 +14,6 @@ links = [
     ["Mer om oss!", "/page/om"]
 ]
 
-
-
 [[posts]]
 header = "Katter"
 description = """
@@ -26,8 +24,6 @@ links = [
     ["Bonzo", "/bonzo"],
     ["Sigge", "/sigge"]
 ]
-
-
 
 [[posts]]
 header = "Snake"
