@@ -1,6 +1,8 @@
 import os
 import toml
 import flask
+from kattbas.database.home import Home
+from kattbas.database.users import Users
 
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -15,6 +17,20 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1
 )
+
+conn = psycopg.connect(
+    dbname=dbname,
+    user=user,
+    host=host,
+    port=port,
+    row_factory=psycopg.rows.dict_row
+)
+
+conn.autocommit = True
+cur = self.conn.cursor()
+
+users = Users(cur)
+home = Home(cur)
 
 with open("data/content.toml", encoding="utf-8") as f:
     data = toml.load(f)["posts"]
@@ -80,11 +96,35 @@ def page_sign_up():
 
 @app.route("/handle_sign_up", methods=["POST"])
 def handle_sign_up():
-    ...
+    username = request.args["uname"]
+    email = request.args["email"]
+    password = request.args["psw"]
+
+    try:
+        user = users.sign_up(username, email, password)
+
+    except EmailAlreadyExists:
+        return render_template(r"login.html", sign_up=True, msg="Epost-adressen är redan regestrerad till ett annat konto!")
+
+    except UsernameAlreadyExists:
+        return render_template(r"login.html", sign_up=True, msg="Användarnamnet är upptaget, välj ett annat.")
+
+    # ska visa användarprofil i framtiden
+    return render_template(r"index.html", user=user)
 
 @app.route("/handle_log_in", methods=["POST"])
 def handle_log_in():
-    ...
+    email = request.args["email"]
+    password = request.args["psw"]
+
+    try:
+        user = users.log_in(email, password)
+
+    except IncorrectPassword:
+        return render_template(r"login.html", sign_up=False, msg="Fel lösenord. Försök igen.")
+        
+    # ska visa användarprofil i framtiden
+    return render_template(r"index.html", user=user)
 
 
 # Start
