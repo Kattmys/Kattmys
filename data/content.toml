@@ -7,7 +7,7 @@ Kattmysnätverket är namnet på det nätverk som stadigt växer, ständigt trot
 """
 images = []
 links = [
-    ["Mer om oss!", "/page/om"]
+    # ["Mer om oss!", "/page/om"]
 ]
 
 [[posts]]
