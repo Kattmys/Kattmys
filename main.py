@@ -5,7 +5,7 @@ import flask
 from werkzeug.middleware.proxy_fix import ProxyFix
 from markdown import markdown
 
-from kattbas.database import UsersDB, Database
+from kattbas.database import User, Database
 
 Flask = flask.Flask
 render_template = flask.render_template
@@ -19,7 +19,7 @@ app.wsgi_app = ProxyFix(
 )
 
 db = Database()
-users = UsersDB(db)
+users = User(db)
 
 with open("data/content.toml", encoding="utf-8") as f:
     data = toml.load(f)["posts"]
