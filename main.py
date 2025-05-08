@@ -9,6 +9,7 @@ from kattbas.database import UsersDB, Database
 
 Flask = flask.Flask
 render_template = flask.render_template
+request = flask.request
 
 app = Flask(__name__)
 
@@ -84,21 +85,22 @@ def page_sign_up():
 
 @app.route("/handle_sign_up", methods=["POST"])
 def handle_sign_up():
-    username = request.args["uname"]
-    email = request.args["email"]
-    password = request.args["psw"]
+    if request.method == "POST":
+        username = request.form["uname"]
+        email = request.form["email"]
+        password = request.form["psw"]
 
-    try:
-        user = users.sign_up(username, email, password)
+        try:
+            user = users.sign_up(username, email, password)
 
-    except EmailAlreadyExists:
-        return render_template(r"login.html", sign_up=True, msg="Epost-adressen är redan regestrerad till ett annat konto!")
+        except EmailAlreadyExists:
+            return render_template(r"login.html", sign_up=True, msg="Epost-adressen är redan regestrerad till ett annat konto!")
 
-    except UsernameAlreadyExists:
-        return render_template(r"login.html", sign_up=True, msg="Användarnamnet är upptaget, välj ett annat.")
+        except UsernameAlreadyExists:
+            return render_template(r"login.html", sign_up=True, msg="Användarnamnet är upptaget, välj ett annat.")
 
-    # ska visa användarprofil i framtiden
-    return render_template(r"index.html", user=user)
+        # ska visa användarprofil i framtiden
+        return render_template(r"index.html", user=user)
 
 @app.route("/handle_log_in", methods=["POST"])
 def handle_log_in():

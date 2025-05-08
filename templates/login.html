@@ -12,13 +12,18 @@
     {% if sign_up %}
     <form method="POST" action="/handle_sign_up">
         <h2>Skapa ett konto!</h2>
+
+        <label class="label" for="uname">Username</label>
+        <input class="field" type="text" placeholder="Enter Username" id="uname" name="uname" required>
+
     {% else %}
     <form method="POST" action="/handle_log_in">
         <h2>Logga in!</h2>
+
     {% endif %}
     
-        <label class="label" for="uname">Username</label>
-        <input class="field" type="text" placeholder="Enter Username" id="uname" name="uname" required>
+        <label class="label" for="email">Email</label>
+        <input class="field" type="text" placeholder="Enter email address" id="email" name="email" required>
 
         <label class="label" for="psw">Password</label>
         <input class="field" type="password" placeholder="Enter password" id="psw" name="psw" required>
