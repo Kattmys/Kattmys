@@ -6,6 +6,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from markdown import markdown
 
 from kattbas.database import User, Database
+from kattbas.errors import *
 
 Flask = flask.Flask
 render_template = flask.render_template
@@ -18,8 +19,7 @@ app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1
 )
 
-db = Database()
-users = User(db)
+Database.init()
 
 with open("data/content.toml", encoding="utf-8") as f:
     data = toml.load(f)["posts"]
@@ -91,7 +91,7 @@ def handle_sign_up():
         password = request.form["psw"]
 
         try:
-            user = users.sign_up(username, email, password)
+            user = User.sign_up(username, email, password)
 
         except EmailAlreadyExists:
             return render_template(r"login.html", sign_up=True, msg="Epost-adressen är redan regestrerad till ett annat konto!")
@@ -104,18 +104,17 @@ def handle_sign_up():
 
 @app.route("/handle_log_in", methods=["POST"])
 def handle_log_in():
-    email = request.args["email"]
-    password = request.args["psw"]
+    email = request.form["email"]
+    password = request.form["psw"]
 
     try:
-        user = users.log_in(email, password)
+        user = User.log_in(email, password)
 
     except IncorrectPassword:
         return render_template(r"login.html", sign_up=False, msg="Fel lösenord. Försök igen.")
         
     # ska visa användarprofil i framtiden
     return render_template(r"index.html", user=user)
-
 
 # Start
 
