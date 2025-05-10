@@ -73,11 +73,17 @@ def page_katt_sigge():
 def page_katt_bonzo():
     return render_template(r"bonzo.html")
 
-
 # login
 @app.route("/login")
 def page_login():
-    return render_template(r"login.html", sign_up=False)
+    try:
+        user = User.from_cookie(request)
+
+    except CookieError as e:
+        print(type(e))
+        return render_template(r"login.html", sign_up=False)
+
+    return render_template(r"index.html", user=user)
 
 @app.route("/signup")
 def page_sign_up():
@@ -91,16 +97,16 @@ def handle_sign_up():
         password = request.form["psw"]
 
         try:
-            user = User.sign_up(username, email, password)
+            User.sign_up(username, email, password)
 
-        except EmailAlreadyExists:
+        except EmailOccupied:
             return render_template(r"login.html", sign_up=True, msg="Epost-adressen är redan regestrerad till ett annat konto!")
 
-        except UsernameAlreadyExists:
+        except UsernameOccupied:
             return render_template(r"login.html", sign_up=True, msg="Användarnamnet är upptaget, välj ett annat.")
 
         # ska visa användarprofil i framtiden
-        return render_template(r"index.html", user=user)
+        return render_template(r"index.html")#, user=user)
 
 @app.route("/handle_log_in", methods=["POST"])
 def handle_log_in():
@@ -108,13 +114,16 @@ def handle_log_in():
     password = request.form["psw"]
 
     try:
-        user = User.log_in(email, password)
+        user, cookie = User.log_in(email, password)
 
-    except IncorrectPassword:
+    except InvalidPassword:
         return render_template(r"login.html", sign_up=False, msg="Fel lösenord. Försök igen.")
         
     # ska visa användarprofil i framtiden
-    return render_template(r"index.html", user=user)
+    response = flask.make_response(render_template(r"index.html", user=user))
+    if cookie is not None:
+        response.set_cookie("AUTH", cookie)
+    return response
 
 # Start
 
