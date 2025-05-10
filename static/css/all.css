@@ -38,6 +38,13 @@ body {
     font-family: 'Newsreader';
 }
 
+.error {
+    color: red;
+    text-align: right;
+    text-decoration: spelling-error;
+    font-size: 22px;
+}
+
 p, a, li {
     font-size: 19px;
 }

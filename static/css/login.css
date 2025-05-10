@@ -1,8 +1,15 @@
+#content {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+
+    margin: auto;
+    margin-top: 0px;
+}
 form {
     display: grid;
 
     width: 100%;
-    max-width: 550px;
     height: auto;
 
     margin: auto;

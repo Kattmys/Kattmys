@@ -1,5 +1,6 @@
 import os
 import toml
+import json
 
 import flask
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -30,6 +31,7 @@ with open("data/downloads.toml", encoding="utf-8") as f:
 # Huvudsidan
 
 @app.route("/")
+@app.route("/home")
 def home():
     return render_template(r"index.html", data=data)
 
@@ -89,6 +91,14 @@ def page_login():
 def page_sign_up():
     return render_template(r"login.html", sign_up=True)
 
+@app.route("/logout")
+def page_log_out():
+    response = flask.make_response(render_template(r"index.html", user=None))
+
+    response.set_cookie("AUTH", json.dumps(None))
+
+    return response
+
 @app.route("/handle_sign_up", methods=["POST"])
 def handle_sign_up():
     if request.method == "POST":
@@ -97,17 +107,24 @@ def handle_sign_up():
         password = request.form["psw"]
 
         try:
-            User.sign_up(username, email, password)
+            user, cookie = User.sign_up(username, email, password)
 
         except EmailOccupied:
-            return render_template(r"login.html", sign_up=True, msg="Epost-adressen är redan regestrerad till ett annat konto!")
+            return render_template(r"login.html", 
+                                   sign_up=True, 
+                                   msg="Epost-adressen är redan regestrerad till ett annat konto!")
 
         except UsernameOccupied:
-            return render_template(r"login.html", sign_up=True, msg="Användarnamnet är upptaget, välj ett annat.")
+            return render_template(r"login.html", 
+                                   sign_up=True, 
+                                   msg="Användarnamnet är upptaget, välj ett annat.")
 
-        # ska visa användarprofil i framtiden
-        return render_template(r"index.html")#, user=user)
+        response = flask.make_response(render_template(r"index.html", user=user))
 
+        if cookie is not None:
+            response.set_cookie("AUTH", cookie)
+
+        return 
 @app.route("/handle_log_in", methods=["POST"])
 def handle_log_in():
     email = request.form["email"]
@@ -116,11 +133,14 @@ def handle_log_in():
     try:
         user, cookie = User.log_in(email, password)
 
-    except InvalidPassword:
-        return render_template(r"login.html", sign_up=False, msg="Fel lösenord. Försök igen.")
+    except (InvalidPassword, InvalidEmail):
+        return render_template(r"login.html", 
+                               sign_up=False, 
+                               msg="Fel epost eller lösenord. Försök igen.")
         
     # ska visa användarprofil i framtiden
     response = flask.make_response(render_template(r"index.html", user=user))
+
     if cookie is not None:
         response.set_cookie("AUTH", cookie)
     return response

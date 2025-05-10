@@ -26,6 +26,10 @@
                 <img src="{{ url_for('static', filename='images/kattmys.png') }}" id="kattmysbild">
         </a>
 
+        {% if user %}
+        <p> {{ user.username }} </p>
+        {% endif %}
+
         <a class="burger">
             <div class="burger-line"></div>
             <div class="burger-line"></div>

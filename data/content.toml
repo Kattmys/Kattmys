@@ -33,7 +33,8 @@ Välkommen att registrera dig!
 images = []
 links = [
     ["Logga in", "/login"],
-    ["Skapa ett konto", "/signup"]
+    ["Skapa ett konto", "/signup"],
+    ["logga ut", "/logout"]
 ]
 
 
