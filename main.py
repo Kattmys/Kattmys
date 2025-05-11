@@ -9,6 +9,8 @@ from markdown import markdown
 from kattbas.database import User, Database
 from kattbas.errors import *
 
+import platform
+
 os = platform.system()
 
 if os == 'Linux':
