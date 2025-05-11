@@ -121,7 +121,7 @@ def handle_log_in():
     # if db_cookie is not None:
     response.set_cookie(
         "auth", db_cookie, max_age=604800,
-        httponly=True, secure=True, samesite="Lax"
+        httponly=True, samesite="Lax"
     )
 
     return response
@@ -155,7 +155,7 @@ def handle_sign_up():
         if cookie is not None:
             response.set_cookie(
                 "auth", cookie, max_age=604800,
-                httponly=True, secure=True, samesite="Lax"
+                httponly=True, samesite="Lax"
             )
 
         return response
@@ -166,7 +166,7 @@ def page_log_out():
 
     response.set_cookie(
         "auth", expires=0,
-        httponly=True, secure=True, samesite="Lax"
+        httponly=True, samesite="Lax"
     )
 
     return response
