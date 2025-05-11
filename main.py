@@ -99,7 +99,7 @@ def page_login():
         print(type(e))
         return render_template(r"login.html", sign_up=False)
 
-    return render_template(r"index.html", user=user)
+    return render_template(r"index.html", user=user, data=data)
 
 @app.route("/signup")
 def page_sign_up():
@@ -160,10 +160,12 @@ def handle_log_in():
         
     # ska visa användarprofil i framtiden
     response = flask.make_response(render_template(r"index.html", user=user))
-    response.set_cookie(
-        "auth", cookie,
-        httponly=True, secure=True, samesite="Lax"
-    )
+
+    if cookie is not None:
+        response.set_cookie(
+            "auth", cookie,
+            httponly=True, secure=True, samesite="Lax"
+        )
     return response
 
 # admin (extremt temporärt; gör det snabbt för att theo sög)
