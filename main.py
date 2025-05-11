@@ -44,7 +44,7 @@ def home():
 
     except CookieError as e:
         print("HELVETE FÖR I FAN \n\n\n")
-        return render_template(r"index.html", data=data)
+    return render_template(r"index.html", data=data)
 
     return render_template(r"index.html", user=user, data=data)
 
@@ -101,20 +101,33 @@ def page_login():
 
     return render_template(r"index.html", user=user, data=data)
 
-@app.route("/signup")
-def page_sign_up():
-    return render_template(r"login.html", sign_up=True)
+@app.route("/handle_log_in", methods=["POST"])
+def handle_log_in():
+    email = request.form["email"]
+    password = request.form["psw"]
 
-@app.route("/logout")
-def page_log_out():
-    response = flask.make_response(render_template(r"index.html", user=None))
+    try:
+        user, db_cookie = User.log_in(email, password)
 
+    except (InvalidPassword, InvalidEmail):
+        return render_template(r"login.html", 
+                               sign_up=False, 
+                               msg="Fel epost eller lösenord. Försök igen.")
+        
+    # ska visa användarprofil i framtiden
+    response = flask.make_response(render_template(r"index.html", user=user))
+
+    # if db_cookie is not None:
     response.set_cookie(
-        "auth", expires=0,
+        "auth", db_cookie,
         httponly=True, secure=True, samesite="Lax"
     )
 
     return response
+
+@app.route("/signup")
+def page_sign_up():
+    return render_template(r"login.html", sign_up=True)
 
 @app.route("/handle_sign_up", methods=["POST"])
 def handle_sign_up():
@@ -145,13 +158,15 @@ def handle_sign_up():
             )
 
         return response
-@app.route("/handle_log_in", methods=["POST"])
-def handle_log_in():
-    email = request.form["email"]
-    password = request.form["psw"]
 
-    try:
-        user, cookie = User.log_in(email, password)
+@app.route("/logout")
+def page_log_out():
+    response = flask.make_response(render_template(r"index.html", user=None))
+
+    response.set_cookie(
+        "auth", expires=0,
+        httponly=True, secure=True, samesite="Lax"
+    )
 
     except (InvalidPassword, InvalidEmail):
         return render_template(r"login.html", 
