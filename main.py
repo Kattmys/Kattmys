@@ -44,7 +44,8 @@ def home():
 
     except CookieError as e:
         print("HELVETE FÖR I FAN \n\n\n")
-    return render_template(r"index.html", data=data)
+
+        return render_template(r"index.html", data=data)
 
     return render_template(r"index.html", user=user, data=data)
 
@@ -119,7 +120,7 @@ def handle_log_in():
 
     # if db_cookie is not None:
     response.set_cookie(
-        "auth", db_cookie,
+        "auth", db_cookie, max_age=604800,
         httponly=True, secure=True, samesite="Lax"
     )
 
@@ -153,7 +154,7 @@ def handle_sign_up():
 
         if cookie is not None:
             response.set_cookie(
-                "auth", cookie,
+                "auth", cookie, max_age=604800,
                 httponly=True, secure=True, samesite="Lax"
             )
 
@@ -167,6 +168,8 @@ def page_log_out():
         "auth", expires=0,
         httponly=True, secure=True, samesite="Lax"
     )
+
+    return response
 
 # admin (extremt temporärt; gör det snabbt för att theo sög)
 @app.route("/change_password")
