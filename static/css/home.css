@@ -1,0 +1,98 @@
+main {
+    display: grid;
+
+    width: 100vw;
+    height: 100vh;
+
+    grid-template-columns: 100%;
+    grid-template-rows: 180px 240px 1fr;
+    grid-template-areas: "head"
+                         "pinned"
+                         "dashboard"
+                         "follows"
+}
+
+#head-section,
+#pinned-activity,
+#user-dashboard,
+#follows {
+    width: 95%;
+
+    padding: 15px;
+    margin: 2.5%;
+
+    background-color: var(--bg1);
+    box-shadow: var(--dec-width) var(--dec-width) var(--accent-primary);
+}
+
+#head-section {
+    grid-area: head;
+
+    height: 140px;
+    width: calc(100% - 60px);
+
+    padding: 15px;
+    /* margin: auto; */
+    margin: auto 30px;
+    /* margin-bottom: 40px; */
+
+    box-shadow: var(--dec-width) var(--dec-width) var(--accent-primary);
+}
+
+#head-pfp {
+    float: left;
+    height: 100px;
+
+    margin: auto;
+    margin-right: 15px;
+
+    box-shadow: var(--dec-width) var(--dec-width) var(--accent-primary);
+}
+
+
+#pinned-activity {
+    grid-area: pinned;
+}
+
+#user-dashboard {
+    grid-area: dashboard;
+}
+
+#follows {
+    grid-area: follows;
+}
+
+#follows ul {
+    padding: 0px;
+}
+
+#follows ul li {
+    height: 60px;
+    border-bottom: var(--accent-primary) var(--dec-width) solid;
+    padding: 10px;
+    padding-bottom: 14px;
+
+    list-style-type: none;
+}
+
+#follows ul li:hover {
+    background-color: var(--bg3)
+}
+
+#follows ul li img {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+}
+
+@media only screen and (min-width: 800px) {
+    main {
+        height: 100%;
+        padding: 30px;
+
+        grid-template-columns: 350px 1fr 350px;
+        grid-template-rows: 200px minmax(100%, 1fr);
+        grid-template-areas: "follows    head   pinned"
+                             "follows dashboard pinned"
+    }
+}

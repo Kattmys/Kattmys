@@ -196,6 +196,12 @@ def handle_psw_change():
     return render_template(r"index.html", data=data, user=user)
     
 
+@app.route("/user/<user>") #, methods=["POST"]
+def user_home(user):
+    user     = User(username=user)
+    cur_user = User.from_cookie(request)
+    return render_template(r"home.html", user=user, cur_user=cur_user)
+
 # Start
 
 if __name__ == "__main__":

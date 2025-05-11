@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %} {{ user.username }} {% endblock %}
+
+{% block head_ext %}
+    <link rel="stylesheet" href='{{ url_for("static", filename="css/home.css") }}'>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div id="head-section">
+        <img src="#" id="head-pfp">
+        <h1 id="head-username">{{ user.username }}</h1>
+        <p class="status">kissar en bajskorv (det kommer blod)</p>
+
+        {% if not (cur_user.username == user.username) %}
+        <ul>
+            <li><a>Message</a></li>
+            <li><a>Follow</a></li>
+        </ul>
+        {% endif %}
+    </div>
+
+    <div id="follows">
+        <h2>{{ user.username }} följer även:</h2>
+        <ul>
+            <li>
+                <img src="#" class="follow-pfp">
+                <h3>{{ user.username }}</h3>
+                <p>Last online: </p>
+            </li>
+            <li>
+                <img src="#" class="follow-pfp">
+                <h3>{{ user.username }}</h3>
+                <p>Last online: </p>
+            </li>
+            <li>
+                <img src="#" class="follow-pfp">
+                <h3>{{ user.username }}</h3>
+                <p>Last online: </p>
+            </li>
+            <li>
+                <img src="#" class="follow-pfp">
+                <h3>{{ user.username }}</h3>
+                <p>Last online: </p>
+            </li>
+            <li>
+                <img src="#" class="follow-pfp">
+                <h3>{{ user.username }}</h3>
+                <p>Last online: </p>
+            </li>
+        </ul>
+    </div>
+
+    <div id="user-dashboard">
+    </div>
+
+    <div id="pinned-activity">
+    </div>
+</main>
+{% endblock %}
