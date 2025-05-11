@@ -9,6 +9,19 @@ from markdown import markdown
 from kattbas.database import User, Database
 from kattbas.errors import *
 
+os = platform.system()
+
+if os == 'Linux':
+    key = "/etc/letsencrypt/live/kattmys.se/privkey.pem"
+    cert "/etc/letsencrypt/kattmys.se/fullchain.pem"
+
+elif os == 'Windows':
+    key = "C://Certbot/live/cicada.kattmys.se/privkey.pem"
+    cert = "C://Certbot/live/cicada.kattmys.se/fullchain.pem"
+
+else:
+    print(os, " Bad os")
+
 Flask = flask.Flask
 render_template = flask.render_template
 request = flask.request
@@ -194,4 +207,4 @@ def handle_psw_change():
 # Start
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=True, ssl_context=(cert, key))
