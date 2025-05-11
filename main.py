@@ -89,6 +89,7 @@ def page_katt_bonzo():
     return render_template(r"bonzo.html")
 
 # login
+
 @app.route("/login")
 def page_login():
     try:
@@ -159,11 +160,10 @@ def handle_log_in():
         
     # ska visa användarprofil i framtiden
     response = flask.make_response(render_template(r"index.html", user=user))
-    if cookie is not None:
-        response.set_cookie(
-            "auth", cookie,
-            httponly=True, secure=True, samesite="Lax"
-        )
+    response.set_cookie(
+        "auth", cookie,
+        httponly=True, secure=True, samesite="Lax"
+    )
     return response
 
 # admin (extremt temporärt; gör det snabbt för att theo sög)
