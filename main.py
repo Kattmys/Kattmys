@@ -109,7 +109,7 @@ def page_log_out():
     response = flask.make_response(render_template(r"index.html", user=None))
 
     response.set_cookie(
-        "AUTH", expires=0,
+        "auth", expires=0,
         httponly=True, secure=True, samesite="Lax"
     )
 
@@ -139,7 +139,7 @@ def handle_sign_up():
 
         if cookie is not None:
             response.set_cookie(
-                "AUTH", cookie,
+                "auth", cookie,
                 httponly=True, secure=True, samesite="Lax"
             )
 
@@ -161,7 +161,7 @@ def handle_log_in():
     response = flask.make_response(render_template(r"index.html", user=user))
     if cookie is not None:
         response.set_cookie(
-            "AUTH", cookie,
+            "auth", cookie,
             httponly=True, secure=True, samesite="Lax"
         )
     return response
