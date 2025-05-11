@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Logga in kattmys {% endblock %}
+
+{% block head_ext %}
+   <link rel="stylesheet" href="{{ url_for("static", filename="css/login.css") }}">
+{% endblock %}
+"
+{% block content %}
+<main>
+    <div id="content">
+        <form method="POST" action="/handle_psw_change">
+            <h2>Ändra lösenord på användare</h2>
+
+            <label class="label" for="uname">Username</label>
+            <input class="field" type="text" placeholder="Enter Username" id="uname" name="uname" required>
+
+            <label class="label" for="psw">New Password</label>
+            <input class="field" type="password"
+            placeholder="Enter new password" id="psw" name="psw" required>
+
+            <button class="field" type="submit"> Commit </button>
+        </form>
+        {% if msg %}
+        <p class="error">{{ msg }}</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}
+

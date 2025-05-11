@@ -28,12 +28,25 @@ with open("data/content.toml", encoding="utf-8") as f:
 with open("data/downloads.toml", encoding="utf-8") as f:
     downloads = toml.load(f)
 
+# TODO: fixa detta
+# with open("local_config.toml", encoding="utf-8") as f:
+#     admin_ids = toml.load(f)["admins"]
+
+admin_ids = [23]
+
 # Huvudsidan
 
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template(r"index.html", data=data)
+    try:
+        user = User.from_cookie(request)
+
+    except CookieError as e:
+        print("HELVETE FÖR I FAN \n\n\n")
+        return render_template(r"index.html", data=data)
+
+    return render_template(r"index.html", user=user, data=data)
 
 # 404
 
@@ -95,7 +108,10 @@ def page_sign_up():
 def page_log_out():
     response = flask.make_response(render_template(r"index.html", user=None))
 
-    response.set_cookie("AUTH", json.dumps(None))
+    response.set_cookie(
+        "AUTH", expires=0,
+        httponly=True, secure=True, samesite="Lax"
+    )
 
     return response
 
@@ -122,7 +138,10 @@ def handle_sign_up():
         response = flask.make_response(render_template(r"index.html", user=user))
 
         if cookie is not None:
-            response.set_cookie("AUTH", cookie)
+            response.set_cookie(
+                "AUTH", cookie,
+                httponly=True, secure=True, samesite="Lax"
+            )
 
         return response
 @app.route("/handle_log_in", methods=["POST"])
@@ -140,10 +159,37 @@ def handle_log_in():
         
     # ska visa användarprofil i framtiden
     response = flask.make_response(render_template(r"index.html", user=user))
-
     if cookie is not None:
-        response.set_cookie("AUTH", cookie)
+        response.set_cookie(
+            "AUTH", cookie,
+            httponly=True, secure=True, samesite="Lax"
+        )
     return response
+
+# admin (extremt temporärt; gör det snabbt för att theo sög)
+@app.route("/change_password")
+def psw_change():
+    try:
+        user = User.from_cookie(request)
+
+    except CookieError as e:
+        return render_template(r"index.html", data=data)
+
+    if user.id in admin_ids:
+        return render_template(r"change_psw.html")
+
+@app.route("/handle_psw_change", methods=["POST"])
+def handle_psw_change():
+    user = User.from_cookie(request)
+    
+    if user.id not in admin_ids:
+        return render_template(r"index.html", data=data)
+
+    user = User(request.form["uname"])
+    user.change_password(request.form["psw"])
+
+    return render_template(r"index.html", data=data, user=user)
+    
 
 # Start
 
