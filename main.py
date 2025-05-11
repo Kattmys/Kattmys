@@ -124,7 +124,7 @@ def handle_sign_up():
         if cookie is not None:
             response.set_cookie("AUTH", cookie)
 
-        return 
+        return response
 @app.route("/handle_log_in", methods=["POST"])
 def handle_log_in():
     email = request.form["email"]
