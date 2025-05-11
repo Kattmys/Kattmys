@@ -185,7 +185,7 @@ def handle_psw_change():
     if user.id not in admin_ids:
         return render_template(r"index.html", data=data)
 
-    user = User(request.form["uname"])
+    user = User(username=request.form["uname"])
     user.change_password(request.form["psw"])
 
     return render_template(r"index.html", data=data, user=user)
