@@ -32,7 +32,7 @@ with open("data/downloads.toml", encoding="utf-8") as f:
 # with open("local_config.toml", encoding="utf-8") as f:
 #     admin_ids = toml.load(f)["admins"]
 
-admin_ids = [23]
+admin_ids = [23, 25]
 
 # Huvudsidan
 
