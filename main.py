@@ -168,21 +168,6 @@ def page_log_out():
         httponly=True, secure=True, samesite="Lax"
     )
 
-    except (InvalidPassword, InvalidEmail):
-        return render_template(r"login.html", 
-                               sign_up=False, 
-                               msg="Fel epost eller lösenord. Försök igen.")
-        
-    # ska visa användarprofil i framtiden
-    response = flask.make_response(render_template(r"index.html", user=user))
-
-    if cookie is not None:
-        response.set_cookie(
-            "auth", cookie,
-            httponly=True, secure=True, samesite="Lax"
-        )
-    return response
-
 # admin (extremt temporärt; gör det snabbt för att theo sög)
 @app.route("/change_password")
 def psw_change():
