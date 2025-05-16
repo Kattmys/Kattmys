@@ -161,6 +161,7 @@ ul {
 }
 
 main {
+    grid-area: content;
     margin-top: var(--nav-height);
     padding: 15px;
     background-color: var(--bg0);
