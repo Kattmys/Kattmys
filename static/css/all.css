@@ -16,6 +16,8 @@
 
     --accent-primary:   rgb(189, 168, 110);
     --accent-secondary: red;
+    --maroon:           maroon;
+    --light-maroon:     #c70c0c;
 
     --nav-height:       144px;
 }
@@ -122,6 +124,10 @@ ul {
 
 .burger-line, .burger {
     display: none;
+}
+
+.burger:active {
+    box-shadow: 0px 0px;
 }
 
 #kattmysbild:hover {

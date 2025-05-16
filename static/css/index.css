@@ -74,6 +74,14 @@ h2 .star {
     margin-bottom: 15px;
 }
 
+.head {
+    z-index: 1000;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
 @media only screen and (min-width: 800px) {
     #main {
         column-count: 2;
@@ -93,6 +101,10 @@ h2 .star {
         width: 100%;
         max-width: initial;
     }
+
+    .head {
+        width: 100%;
+    }
 }
 
 @media only screen and (min-width:1060px) {
@@ -100,6 +112,3 @@ h2 .star {
         column-count: 3;
     }
 }
-
-
-

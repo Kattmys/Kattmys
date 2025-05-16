@@ -26,9 +26,6 @@
                 <img src="{{ url_for('static', filename='images/kattmys.png') }}" id="kattmysbild">
         </a>
 
-        {% if user %}
-        <p> {{ user.username }} </p>
-        {% endif %}
 
         <a class="burger">
             <div class="burger-line"></div>
@@ -44,7 +41,15 @@
 
     </nav>
 
-    {% block content %}{% endblock %}
+
+    {% if user %}
+        <div class="content head">
+            <h2 id="username"><div class="star">!</div> {{ user.username }} <div class="star">!</div></h2>
+        </div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
 
     <!--<footer>-->
     <!--    <p>Nåt roligt</p>-->
