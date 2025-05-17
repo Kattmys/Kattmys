@@ -34,7 +34,7 @@ images = []
 links = [
     ["Logga in", "/login"],
     ["Skapa ett konto", "/signup"],
-    ["logga ut", "/logout"]
+    ["Logga ut", "/logout"]
 ]
 
 

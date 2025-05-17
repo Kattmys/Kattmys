@@ -3,11 +3,16 @@
 {% block title %} 404 {% endblock %}
 
 {% block head_ext %}
+    <style>
+        p {
+            white-space: pre-wrap;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
 <main>
-<h1>Ånaj!</h2>
-<p>Den angivna addressen hittades inte på sidan. Om du angav addressen manuellt, kontrollera din stavning och försök igen!</p>
+    <h1>Felkod: {{ code }}</h1>
+    <p>{{ msg }}</p>
 </main>
 {% endblock %}

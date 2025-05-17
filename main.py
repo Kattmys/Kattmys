@@ -9,12 +9,11 @@ from markdown import markdown
 from kattbas.database import User, Database
 from kattbas.errors import *
 
-Flask = flask.Flask
 render_template = flask.render_template
 request = flask.request
 redirect = flask.redirect
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 # App is behind one proxy that sets the -For and -Host headers.
 app.wsgi_app = ProxyFix(
@@ -29,12 +28,6 @@ with open("data/content.toml", encoding="utf-8") as f:
 with open("data/downloads.toml", encoding="utf-8") as f:
     downloads = toml.load(f)
 
-# TODO: fixa detta
-# with open("local_config.toml", encoding="utf-8") as f:
-#     admin_ids = toml.load(f)["admins"]
-
-admin_ids = [23, 25]
-
 @app.context_processor
 def inject_user():
     try:
@@ -42,15 +35,7 @@ def inject_user():
         return dict(user=user)
 
     except CookieError as e:
-        print("No cookie found")
         return dict(user=None)
-
-# @app.context_processor
-# def inject_flow_data():
-#     paths = ["/"]
-#
-#     if request.path in paths:
-#         return dict(data=content_data)
 
 # Huvudsidan
 
@@ -58,11 +43,20 @@ def inject_user():
 def home():
     return render_template("index.html", data=content)
 
-# 404
+# Felmeddelanden
+
+error_msgs = {
+    404: "Den angivna addressen hittades inte på sidan. Om du angav addressen manuellt, kontrollera din stavning och försök igen!",
+    500: "Någon av Kattmysnätverkets utvecklare kan inte programmera, och ett fel har därför uppstått i koden. Rapportera det gärna till oss!",
+}
 
 @app.errorhandler(404)
-def page_not_found(e):
-    return render_template(r"404.html"), 404
+def err_page_not_found(e):
+    return render_template(r"error.html", code="404", msg=error_msgs[404])
+
+@app.errorhandler(500)
+def err_internal_server_error(e):
+    return render_template(r"error.html", code="500", msg=error_msgs[500])
 
 # Nedladdningar
 
@@ -80,7 +74,7 @@ def page_download(file):
 @app.route("/page/<name>")
 def page_page(name):
     try:
-        with open(f"static/pages/{name}.md") as file:
+        with open(f"static/pages/{name}.md", encoding="utf-8") as file:
             html = markdown(file.read())
             # NOTE: pissful .replace användning
             return render_template("/page.html").replace("REPLACE_THIS", html)
@@ -115,7 +109,7 @@ def handle_log_in():
     except (InvalidPassword, InvalidEmail):
         return render_template(r"login.html", 
                                sign_up=False, 
-                               msg="Fel epost eller lösenord. Försök igen.")
+                               msg="Fel mejladdress eller lösenord. Försök igen.")
         
     # ska visa användarprofil i framtiden
     response = flask.make_response(redirect("/"))
@@ -145,12 +139,17 @@ def handle_sign_up():
         except EmailOccupied:
             return render_template(r"login.html", 
                                    sign_up=True, 
-                                   msg="Epost-adressen är redan regestrerad till ett annat konto!")
+                                   msg="Mejladdressen är upptagen.")
 
         except UsernameOccupied:
             return render_template(r"login.html", 
                                    sign_up=True, 
-                                   msg="Användarnamnet är upptaget, välj ett annat.")
+                                   msg="Användarnamnet är upptaget.")
+
+        except (BadEmail, BadUsername, BadPassword) as e:
+            return render_template(r"login.html", 
+                                   sign_up=True, 
+                                   msg=str(e))
 
         response = flask.make_response(redirect("/"))
 
@@ -174,29 +173,28 @@ def page_log_out():
     return response
 
 # admin (extremt temporärt; gör det snabbt för att theo sög)
-@app.route("/change_password")
-def psw_change():
-    try:
-        user = User.from_cookie(request)
+# @app.route("/change_password")
+# def psw_change():
+#     try:
+#         user = User.from_cookie(request)
 
-    except CookieError as e:
-        return redirect("/")
+#     except CookieError as e:
+#         return redirect("/")
 
-    if user.id in admin_ids:
-        return render_template(r"change_psw.html")
+#     if user.id in admin_ids:
+#         return render_template(r"change_psw.html")
 
-@app.route("/handle_psw_change", methods=["POST"])
-def handle_psw_change():
-    user = User.from_cookie(request)
+# @app.route("/handle_psw_change", methods=["POST"])
+# def handle_psw_change():
+#     user = User.from_cookie(request)
     
-    if user.id not in admin_ids:
-        return redirect("/", data=data)
+#     if user.id not in admin_ids:
+#         return redirect("/", data=data)
 
-    user = User(username=request.form["uname"])
-    user.change_password(request.form["psw"])
+#     user = User(username=request.form["uname"])
+#     user.change_password(request.form["psw"])
 
-    return redirect("/")
-    
+#     return redirect("/")
 
 @app.route("/user/<user>") #, methods=["POST"]
 def user_home(user):
@@ -206,4 +204,4 @@ def user_home(user):
 # Start
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000)#, debug=True)
