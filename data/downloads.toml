@@ -20,8 +20,12 @@ desc = "Detta är en version av spelet 'snake' som brutalt utklassar versionen v
 text = "blablablablabla"
 file = "files/programs/snake_francis.7z"
 links = {}
-images = [
-    "images/katter/sigge1.jpg",
-    "images/katter/sigge1.jpg",
-    "images/katter/sigge1.jpg"
-]
+images = []
+
+[minesweepec_c_francis]
+name = "Minesweeper i C | av Francis"
+desc = "Jag har på senaste försökt att lära mig C. Detta är mitt första försök på något inom språket och det är inte helt färdigt, men ändå spelbart!"
+text = ""
+file = "files/programs/minesweeper_c.7z"
+links = {}
+images = []

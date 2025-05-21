@@ -39,6 +39,19 @@ links = [
 
 
 [[posts]]
+header = "Francis C project"
+description = """
+Detta inlägg uppdateras regelbundet med länkar till mina senaste projekt skriva i programmeringsspråket C.
+
+mitt senaste project är även mitt första: minesweeper med ncurses!
+"""
+images = []
+links = [
+    ["Minesweeper | ncurses", "download/minesweeper_c_francis"]
+]
+
+
+[[posts]]
 header = "Snake"
 description = """
 Episka snake-spel skrivna i Rust med sdl2.
