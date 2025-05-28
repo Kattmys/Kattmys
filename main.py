@@ -28,6 +28,19 @@ with open("data/content.toml", encoding="utf-8") as f:
 with open("data/downloads.toml", encoding="utf-8") as f:
     downloads = toml.load(f)
 
+# NOTE: Ska användas av andra sidor.
+#       Kanske temporärt.
+@app.route("/get-cookie")
+def get_cookie():
+    cookie = request.cookies.get("auth")
+    if cookie:
+        return json.dumps({
+            "found": True,
+            "cookie": cookie
+        })
+    else:
+        return json.dumps({"found": False})
+
 @app.context_processor
 def inject_user():
     try:
