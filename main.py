@@ -9,6 +9,8 @@ from markdown import markdown
 from kattbas.database import User, Database
 from kattbas.errors import *
 
+from authentication import *
+
 render_template = flask.render_template
 request = flask.request
 redirect = flask.redirect
@@ -44,7 +46,7 @@ def get_cookie():
 @app.context_processor
 def inject_user():
     try:
-        user = User.from_cookie(request)
+        user = user_from_cookie(request)
         return dict(user=user)
 
     except CookieError as e:
@@ -117,7 +119,7 @@ def handle_log_in():
     password = request.form["psw"]
 
     try:
-        user, db_cookie = User.log_in(email, password)
+        user, db_cookie = log_in(email, password)
 
     except (InvalidPassword, InvalidEmail):
         return render_template(r"login.html", 
@@ -147,7 +149,7 @@ def handle_sign_up():
         password = request.form["psw"]
 
         try:
-            user, cookie = User.sign_up(username, email, password)
+            user, cookie = sign_up(username, email, password)
 
         except EmailOccupied:
             return render_template(r"login.html", 
