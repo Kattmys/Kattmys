@@ -93,28 +93,3 @@ def sign_up(username, email, password):
     User.add(username, email, password)
     return log_in(email, password)
 
-def user_from_cookie(request):
-    cookie = request.cookies.get("auth")
-
-    if not cookie:
-        raise CookieNotFound
-
-    try:
-        data = json.loads(cookie)
-        user_id = data["id"]
-        token = data["auth"]
-
-    except (json.decoder.JSONDecodeError, KeyError) as e:
-        raise InvalidCookie(str(e))
-    
-    try:
-        user = User(user_id=user_id)
-    except InvalidId as e:
-        raise InvalidCookie("Invalid id")
-
-    if user.auth_token == token:
-        return user
-
-    else:
-        raise InvalidCookie("Wrong token")
-

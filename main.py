@@ -45,8 +45,13 @@ def get_cookie():
 
 @app.context_processor
 def inject_user():
+    cookie = request.cookies.get("auth")
+
+    if not cookie:
+        return dict(user=None)
+
     try:
-        user = user_from_cookie(request)
+        user = User.from_cookie(cookie)
         return dict(user=user)
 
     except CookieError as e:
