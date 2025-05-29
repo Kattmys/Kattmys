@@ -8,6 +8,7 @@ from markdown import markdown
 
 from kattbas.database import User, Database
 from kattbas.errors import *
+from kattbas.config import config
 
 from authentication import *
 
@@ -32,16 +33,26 @@ with open("data/downloads.toml", encoding="utf-8") as f:
 
 # NOTE: Ska användas av andra sidor.
 #       Kanske temporärt.
-@app.route("/get-cookie")
-def get_cookie():
-    cookie = request.cookies.get("auth")
-    if cookie:
-        return json.dumps({
-            "found": True,
-            "cookie": cookie
-        })
-    else:
-        return json.dumps({"found": False})
+# @app.route("/get-cookie")
+# def get_cookie():
+#     cookie = request.cookies.get("auth")
+
+#     if cookie:
+#         return render_template(
+#             "post_message.html",
+#             msg=json.dumps({
+#                 "found": True,
+#                 "cookie": cookie
+#             }),
+#             dest=request.args.get("dest")
+#         )
+
+#     else:
+#         return render_template(
+#             "post_message.html",
+#             msg=json.dumps({"found": False}),
+#             dest=request.args.get("dest")
+#         )
 
 @app.context_processor
 def inject_user():
@@ -136,8 +147,13 @@ def handle_log_in():
 
     # if db_cookie is not None:
     response.set_cookie(
-        "auth", db_cookie, max_age=604800,
-        httponly=True, samesite="Lax"
+        "auth",
+        db_cookie,
+        max_age=604800,
+        domain="kattmys.se",
+        httponly=True,
+        samesite='None',
+        secure=True
     )
 
     return response
