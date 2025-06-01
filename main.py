@@ -31,29 +31,6 @@ with open("data/content.toml", encoding="utf-8") as f:
 with open("data/downloads.toml", encoding="utf-8") as f:
     downloads = toml.load(f)
 
-# NOTE: Ska användas av andra sidor.
-#       Kanske temporärt.
-# @app.route("/get-cookie")
-# def get_cookie():
-#     cookie = request.cookies.get("auth")
-
-#     if cookie:
-#         return render_template(
-#             "post_message.html",
-#             msg=json.dumps({
-#                 "found": True,
-#                 "cookie": cookie
-#             }),
-#             dest=request.args.get("dest")
-#         )
-
-#     else:
-#         return render_template(
-#             "post_message.html",
-#             msg=json.dumps({"found": False}),
-#             dest=request.args.get("dest")
-#         )
-
 @app.context_processor
 def inject_user():
     cookie = request.cookies.get("auth")
@@ -108,7 +85,7 @@ def page_page(name):
         with open(f"static/pages/{name}.md", encoding="utf-8") as file:
             html = markdown(file.read())
             # NOTE: pissful .replace användning
-            return render_template("/page.html").replace("REPLACE_THIS", html)
+            return render_template("/page.html", html=html)
 
     except FileNotFoundError:
         return redirect('/404')
