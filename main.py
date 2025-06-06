@@ -186,28 +186,28 @@ def page_log_out():
     return response
 
 # admin (extremt temporärt; gör det snabbt för att theo sög)
-# @app.route("/change_password")
-# def psw_change():
-#     try:
-#         user = User.from_cookie(request)
+@app.route("/change_password")
+def psw_change():
+    try:
+        user = User.from_cookie(request)
 
-#     except CookieError as e:
-#         return redirect("/")
+    except CookieError as e:
+        return redirect("/")
 
-#     if user.id in admin_ids:
-#         return render_template(r"change_psw.html")
+    if user.id in [23]:
+        return render_template(r"change_psw.html")
 
-# @app.route("/handle_psw_change", methods=["POST"])
-# def handle_psw_change():
-#     user = User.from_cookie(request)
+@app.route("/handle_psw_change", methods=["POST"])
+def handle_psw_change():
+    user = User.from_cookie(request)
     
-#     if user.id not in admin_ids:
-#         return redirect("/", data=data)
+    if user.id not in admin_ids:
+        return redirect("/", data=data)
 
-#     user = User(username=request.form["uname"])
-#     user.change_password(request.form["psw"])
+    user = User(username=request.form["uname"])
+    user.change_password(request.form["psw"])
 
-#     return redirect("/")
+    return redirect("/")
 
 @app.route("/user/<user>") #, methods=["POST"]
 def user_home(user):
