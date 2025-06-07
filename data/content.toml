@@ -10,6 +10,35 @@ links = [
     # ["Mer om oss!", "/page/om"]
 ]
 
+[[posts]]
+header = "Jack"
+description = """
+Jag kör med https /John Doe
+"""
+images = []
+links = [
+    ["jack", "https://jack.kattmys.se"]
+]
+
+[[posts]]
+header = "Fred"
+description = """
+Detta är min webbsajt på intranätet!
+"""
+images = []
+links = [
+    ["Sajt", "http://fred.kattmys.se"]
+]
+
+[[posts]]
+header = "Francis"
+description = """
+Cicada hemsida
+"""
+images = []
+links = [
+    ["Sajt", "http://cicada.kattmys.se"]
+]
 
 [[posts]]
 header = "Katter"
