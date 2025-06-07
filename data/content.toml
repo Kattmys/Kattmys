@@ -11,33 +11,15 @@ links = [
 ]
 
 [[posts]]
-header = "Jack"
+header = "Kattmysmedlemmarna"
 description = """
-Jag kör med https /John Doe
+Kolla in kattmysmedlemmarnas personliga sajter här!
 """
 images = []
 links = [
-    ["jack", "https://jack.kattmys.se"]
-]
-
-[[posts]]
-header = "Fred"
-description = """
-Detta är min webbsajt på intranätet!
-"""
-images = []
-links = [
-    ["Sajt", "http://fred.kattmys.se"]
-]
-
-[[posts]]
-header = "Francis"
-description = """
-Cicada hemsida
-"""
-images = []
-links = [
-    ["Sajt", "http://cicada.kattmys.se"]
+    ["Jack",   "https://jack.kattmys.se"],
+    ["Fred",   "http://fred.kattmys.se"],
+    ["Cicada", "http://cicada.kattmys.se"]
 ]
 
 [[posts]]
