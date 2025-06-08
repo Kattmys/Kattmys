@@ -121,7 +121,7 @@ def handle_log_in():
         
     # ska visa användarprofil i framtiden
     response = flask.make_response(redirect(
-        "/" if request.args["redirect_url"] is None else request.args["redirect_url"]
+        "/" if "redirect_url" not in request.args else request.args["redirect_url"]
     ))
 
     # if db_cookie is not None:
