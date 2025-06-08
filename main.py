@@ -120,7 +120,9 @@ def handle_log_in():
                                msg="Fel mejladdress eller lösenord. Försök igen.")
         
     # ska visa användarprofil i framtiden
-    response = flask.make_response(redirect("/"))
+    response = flask.make_response(redirect(
+        "/" if request.args["redirect_url"] is None else request.args["redirect_url"]
+    ))
 
     # if db_cookie is not None:
     response.set_cookie(
