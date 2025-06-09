@@ -9,6 +9,7 @@ from markdown import markdown
 from kattbas.database import User, Database
 from kattbas.errors import *
 from kattbas.config import config
+from kattbas.log import log
 
 from authentication import *
 
@@ -34,6 +35,7 @@ with open("data/downloads.toml", encoding="utf-8") as f:
 @app.context_processor
 def inject_user():
     cookie = request.cookies.get("auth")
+    log.debug("\n\n\n~~~ Cookie: ~~~\n" + json.dumps(cookie) + "\n\n")
 
     if not cookie:
         return dict(user=None)
@@ -135,6 +137,9 @@ def handle_log_in():
         secure=True
     )
 
+    cookie = request.cookies.get("auth")
+    log.debug("\n\n\n~~~ Cookie: ~~~\n" + json.dumps(cookie) + "\n\n")
+
     return response
 
 @app.route("/signup")
@@ -213,10 +218,10 @@ def handle_psw_change():
 
 @app.route("/user/<user>") #, methods=["POST"]
 def user_home(user):
-    user     = User(username=user)
+    user = User(username=user)
     return render_template(r"home.html", user_page=user)
 
 # Start
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000)#, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=True)
