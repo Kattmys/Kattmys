@@ -11,7 +11,7 @@ from kattbas.log import log
 
 RANDOM_STRING_LENGTH = 256
 RANDOM_STRING_CHARS = \
-    string.ascii_letters + string.digits + string.punctuation
+        string.ascii_letters + string.digits + string.punctuation
 
 MIN_USERNAME_LENGTH = 4
 MAX_USERNAME_LENGTH = 20
@@ -38,12 +38,12 @@ def check_username(username):
             return username
         else:
             raise BadUsername(
-                f"Användarnamn måste vara mellan {MIN_USERNAME_LENGTH} och {MAX_USERNAME_LENGTH} tecken långa."
-            )
+                    f"Användarnamn måste vara mellan {MIN_USERNAME_LENGTH} och {MAX_USERNAME_LENGTH} tecken långa."
+                    )
     else:
         raise BadUsername(
-            "Användarnamn måste börja med en bokstav, sluta med en bokstav eller siffra, och endast bestå av bokstäver, siffror, understreck och bindestreck."
-        )
+                "Användarnamn måste börja med en bokstav, sluta med en bokstav eller siffra, och endast bestå av bokstäver, siffror, understreck och bindestreck."
+                )
 
 def check_password(password):
     if len(password) < MIN_PASSWORD_LENGTH:
@@ -77,12 +77,15 @@ def log_in(email, password):
     cookie = json.dumps({
         "id": user.id,
         "auth": auth
-    })
+        })
 
-    log.debug(f"""Cookie baking successful:
+    log.debug(
+f"""Cookie baking successful:
 username: {user.username}
 cookie:
-{cookie}""")
+{cookie}
+
+""")
 
     return user, cookie
 
