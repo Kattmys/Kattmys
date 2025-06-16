@@ -7,12 +7,11 @@ from kattbas.flask import *
 from werkzeug.middleware.proxy_fix import ProxyFix
 from markdown import markdown
 
-from kattbas.database import User, Database
+from kattbas.database import User, Database, utils
+from kattbas.database.authentication import *
 from kattbas.errors import *
 from kattbas.config import config
 from kattbas.log import log
-
-from authentication import *
 
 app = flask.Flask(__name__)
 
@@ -31,14 +30,15 @@ with open("data/downloads.toml", encoding="utf-8") as f:
 
 @app.context_processor
 def inject_user():
-    cookie = request.cookies.get("auth")
-    log.debug("\n\n\n~~~ Cookie: ~~~\n" + json.dumps(cookie) + "\n\n")
+    # cookie = request.cookies.get("auth")
+    # log.debug("\n\n\n~~~ Cookie: ~~~\n" + json.dumps(cookie) + "\n\n")
 
-    if not cookie:
-        return dict(user=None)
+    # if not cookie:
+    #     return dict(user=None)
 
     try:
-        user = User.from_cookie(cookie)
+        # user = User.from_cookie(cookie)
+        user = utils.get_user(flask)
         return dict(user=user)
 
     except CookieError as e:
