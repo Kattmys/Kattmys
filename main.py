@@ -104,6 +104,13 @@ def page_katt_bonzo():
 
 # login
 
+cookie_settings = dict(
+    domain="kattmys.se",
+    httponly=True,
+    samesite='None',
+    secure=True
+)
+
 @app.route("/login")
 def page_login():
     return render_template(r"login.html", sign_up=False)
@@ -114,7 +121,7 @@ def handle_log_in():
     password = request.form["psw"]
 
     try:
-        user, db_cookie = log_in(email, password)
+        user, cookie = log_in(email, password)
 
     except (InvalidPassword, InvalidEmail):
         return render_template(r"login.html", 
@@ -129,16 +136,10 @@ def handle_log_in():
     # if db_cookie is not None:
     response.set_cookie(
         "auth",
-        db_cookie,
+        cookie,
         max_age=604800,
-        domain="kattmys.se",
-        httponly=True,
-        samesite='None',
-        secure=True
+        **cookie_settings
     )
-
-    cookie = request.cookies.get("auth")
-    log.debug("\n\n\n~~~ Cookie: ~~~\n" + json.dumps(cookie) + "\n\n")
 
     return response
 
@@ -174,9 +175,12 @@ def handle_sign_up():
         response = flask.make_response(redirect("/"))
 
         if cookie is not None:
+            # if db_cookie is not None:
             response.set_cookie(
-                "auth", cookie, max_age=604800,
-                httponly=True, samesite="Lax"
+                "auth",
+                cookie,
+                max_age=604800,
+                **cookie_settings
             )
 
         return response
@@ -184,10 +188,11 @@ def handle_sign_up():
 @app.route("/logout")
 def page_log_out():
     response = flask.make_response(redirect("/"))
-
     response.set_cookie(
-        "auth", expires=0,
-        httponly=True, samesite="Lax"
+        "auth",
+        "",
+        expires=0,
+        **cookie_settings
     )
 
     return response
