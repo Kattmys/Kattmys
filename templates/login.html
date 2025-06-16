@@ -18,7 +18,11 @@
             <input class="field" type="text" placeholder="Enter Username" id="uname" name="uname" required>
 
         {% else %}
-        <form method="POST" action="/handle_log_in">
+            {% if not redirect_url %}
+                <form method="POST" action="/handle_log_in">
+            {% else %}
+                <form method="POST" action="/handle_log_in?redirect_url={{ redirect_url }}">
+            {% endif %}
             <h2>Logga in!</h2>
 
         {% endif %}

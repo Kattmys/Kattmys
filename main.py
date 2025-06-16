@@ -113,7 +113,12 @@ cookie_settings = dict(
 
 @app.route("/login")
 def page_login():
-    return render_template(r"login.html", sign_up=False)
+    return render_template(
+        r"login.html",
+        sign_up=False,
+        redirect_url=None if "redirect_url" not in request.args else \
+            request.args["redirect_url"]
+    )
 
 @app.route("/handle_log_in", methods=["POST"])
 def handle_log_in():

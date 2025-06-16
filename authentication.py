@@ -79,13 +79,7 @@ def log_in(email, password):
         "auth": auth
         })
 
-    log.debug(
-f"""Cookie baking successful:
-username: {user.username}
-cookie:
-{cookie}
-
-""")
+    log.debug("Cookie baking successful.")
 
     return user, cookie
 
