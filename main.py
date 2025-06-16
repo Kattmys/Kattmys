@@ -2,7 +2,8 @@ import os
 import toml
 import json
 
-import flask
+from kattbas.flask import *
+
 from werkzeug.middleware.proxy_fix import ProxyFix
 from markdown import markdown
 
@@ -12,10 +13,6 @@ from kattbas.config import config
 from kattbas.log import log
 
 from authentication import *
-
-render_template = flask.render_template
-request = flask.request
-redirect = flask.redirect
 
 app = flask.Flask(__name__)
 
@@ -46,6 +43,11 @@ def inject_user():
 
     except CookieError as e:
         return dict(user=None)
+
+@app.route("/get-auth")
+def get_auth():
+    cookie = request.cookies.get("auth")
+    return cookie if cookie else ""
 
 # Huvudsidan
 
