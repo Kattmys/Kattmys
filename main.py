@@ -5,7 +5,9 @@ import json
 from kattbas.flask import *
 
 from werkzeug.middleware.proxy_fix import ProxyFix
+from werkzeug.utils import safe_join
 from markdown import markdown
+from pathlib import Path
 
 from kattbas.database import User, Database, utils
 from kattbas.database.authentication import *
@@ -19,6 +21,8 @@ app = flask.Flask(__name__)
 app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1
 )
+
+
 
 Database.init()
 
@@ -93,6 +97,30 @@ def page_page(name):
 
     except FileNotFoundError:
         return redirect('/404')
+
+
+
+POSTS_DIR = Path(app.root_path) / "static" / "posts"
+@app.route("/posts/<path:post_path>")
+def page_posts(post_path):
+
+    # Visar en markdown-sida som HTML.
+    # URL: /posts/politik/inrikes/.../filnamn  (utan .md)
+    # candidate_file = safe_join(POSTS_DIR, post_path + ".md")
+    # candidate_dir  = safe_join(POSTS_DIR, post_path)
+
+    md_filepath = safe_join(POSTS_DIR, post_path + ".md")
+    if md_filepath is None:
+        return redirect("/404")
+
+    if not Path(md_filepath).is_file():
+        return redirect("/404")
+
+
+    with open(md_filepath, encoding="utf-8") as file:
+        html = markdown(file.read())
+
+    return render_template("page.html", html=html)
 
 # Katter
 
