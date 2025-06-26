@@ -3,7 +3,7 @@
 {% block title %} {{ user.username }} {% endblock %}
 
 {% block head_ext %}
-    <link rel="stylesheet" href='{{ url_for("static", filename="css/home.css") }}'>
+<link rel="stylesheet" href='{{ url_for("static", filename="css/home.css") }}'>
 {% endblock %}
 
 {% block content %}
@@ -20,42 +20,42 @@
         </ul>
         {% endif %}
     </div>
+    <div>
+        <div id="follows">
+            <h2>{{ user.username }} följer även:</h2>
+            <ul>
+                <li>
+                    <img src="#" class="follow-pfp">
+                    <h3>{{ user.username }}</h3>
+                    <p>Last online: </p>
+                </li>
+                <li>
+                    <img src="#" class="follow-pfp">
+                    <h3>{{ user.username }}</h3>
+                    <p>Last online: </p>
+                </li>
+                <li>
+                    <img src="#" class="follow-pfp">
+                    <h3>{{ user.username }}</h3>
+                    <p>Last online: </p>
+                </li>
+                <li>
+                    <img src="#" class="follow-pfp">
+                    <h3>{{ user.username }}</h3>
+                    <p>Last online: </p>
+                </li>
+                <li>
+                    <img src="#" class="follow-pfp">
+                    <h3>{{ user.username }}</h3>
+                    <p>Last online: </p>
+                </li>
+            </ul>
+        </div>
 
-    <div id="follows">
-        <h2>{{ user.username }} följer även:</h2>
-        <ul>
-            <li>
-                <img src="#" class="follow-pfp">
-                <h3>{{ user.username }}</h3>
-                <p>Last online: </p>
-            </li>
-            <li>
-                <img src="#" class="follow-pfp">
-                <h3>{{ user.username }}</h3>
-                <p>Last online: </p>
-            </li>
-            <li>
-                <img src="#" class="follow-pfp">
-                <h3>{{ user.username }}</h3>
-                <p>Last online: </p>
-            </li>
-            <li>
-                <img src="#" class="follow-pfp">
-                <h3>{{ user.username }}</h3>
-                <p>Last online: </p>
-            </li>
-            <li>
-                <img src="#" class="follow-pfp">
-                <h3>{{ user.username }}</h3>
-                <p>Last online: </p>
-            </li>
-        </ul>
-    </div>
+        <div id="user-dashboard">
+        </div>
 
-    <div id="user-dashboard">
-    </div>
-
-    <div id="pinned-activity">
-    </div>
+        <div id="pinned-activity">
+        </div>
 </main>
 {% endblock %}

@@ -3,35 +3,35 @@
 {% block title %} Våra projekt {% endblock %}
 
 {% block head_ext %}
-    <link rel="stylesheet" href='{{ url_for("static", filename="css/index.css") }}'>
-    <script src="{{ url_for('static', filename='scripts/index.html') }}"></script> -->
+<link rel="stylesheet" href='{{ url_for("static", filename="css/index.css") }}'>
+<script src="{{ url_for('static', filename='scripts/index.html') }}"></script>
 {% endblock %}
 
 {% block content %}
 <main id="main">
     {% if user %}
-        <div class="content head">
-            <h2 id="username"><div class="star">!</div> {{ user.username }} <div class="star">!</div></h2>
-        </div>
+    <div class="content head">
+        <h2 id="username"><div class="star">!</div> {{ user.username }} <div class="star">!</div></h2>
+    </div>
     {% endif %}
 
     {% for info in data %}
-        <!-- <section class="item"> -->
-            <div class="content">
-                <h2><div class="star">★</div> {{ info.header }} <div class="star">★</div></h2>
-                <p>{{ info.description }}</p>
+    <!-- <section class="item"> -->
+    <div class="content">
+        <h2><div class="star">★</div> {{ info.header }} <div class="star">★</div></h2>
+        <p>{{ info.description }}</p>
 
-                {% for path in info.images %}
-                    <img src="{{ url_for('static', filename=path) }}">
-                {% endfor %}
+        {% for path in info.images %}
+        <img src="{{ url_for('static', filename=path) }}">
+        {% endfor %}
 
-                <ul class="links">
-                    {% for link in info.links %}
-                        <li><a href="{{ link[1] }}">{{ link[0] }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        <!-- </section> -->
+        <ul class="links">
+            {% for link in info.links %}
+            <li><a href="{{ link[1] }}">{{ link[0] }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- </section> -->
     {% endfor %}
 </main>
 {% endblock %}
